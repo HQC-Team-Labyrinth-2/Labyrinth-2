@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-    static class UserInputAndOutput
+    public static class UserInputAndOutput
     {
         public const string INVALID_MOVE_MSG = "Invalid move!";
         public const string INVALID_COMMAND_MSG = "Invalid command!";

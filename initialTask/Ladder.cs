@@ -5,58 +5,110 @@ using System.Text;
 
 namespace Labyrinth
 {
-    class Ladder
+    public class Ladder
     {
-        private const int TOP_RESULTS_CAPACITY = 5;
-        private List<Result> topResults;
+        private const int TopResultsCapacity = 5;
+        private readonly List<Result> _topResults;
 
         public Ladder()
         {
-            topResults = new List<Result>();
-            topResults.Capacity = TOP_RESULTS_CAPACITY;
+            _topResults = new List<Result> {Capacity = TopResultsCapacity};
+        }
+
+        /// <summary>
+        /// It is used only for testing
+        /// This method returns _topResults
+        /// </summary>
+        public List<Result> _TopResults()
+        {
+            return _topResults;
+        }
+
+        /// <summary>
+        /// It is used only for testnig
+        /// This method return the capacity
+        /// </summary>
+        /// <returns></returns>
+        public int GetTopResultsCapacity()
+        {
+            return TopResultsCapacity;
+        }
+
+
+        /// <summary>
+        /// It is used only for testing.
+        /// This method is similar to PrintLadder, but instead of writing to console, it returns result.
+        /// </summary>
+        public string ReturnLadder()
+        {
+            StringBuilder str = new StringBuilder();
+            if (_topResults.Count == 0)
+            {
+                return UserInputAndOutput.SCOREBOARD_EMPTY_MSG;
+            }
+           
+            for (var index = 0; index < _topResults.Count; index++)
+            {
+                str.AppendLine(string.Format("{0}. {1} --> {2} moves", index + 1,
+                    _topResults[index].PlayerName, _topResults[index].MovesCount));
+            }
+
+            return str.ToString();
+            
         }
 
         public void PrintLadder()
         {
-            if (topResults.Count == 0)
+            if (_topResults.Count == 0)
             {
                 Console.WriteLine(UserInputAndOutput.SCOREBOARD_EMPTY_MSG);
             }
             else
             {
-                for (int index = 0; index < topResults.Count; index++)
+                for (var index = 0; index < _topResults.Count; index++)
                 {
                     Console.WriteLine("{0}. {1} --> {2} moves", index + 1,
-                        topResults[index].PlayerName, topResults[index].MovesCount);
+                        _topResults[index].PlayerName, _topResults[index].MovesCount);
                 }
             }
         }
 
         public bool ResultQualifiesInLadder(int result)
         {
-            if (topResults.Count < TOP_RESULTS_CAPACITY )
+            if (_topResults.Count < TopResultsCapacity )
             {
                 return true;
             }
-            if (result < topResults.Max().MovesCount)
+
+            if (result < _topResults.Max().MovesCount)
             {
                 return true;
             }
+
             return false;
         }
 
         public void AddResultInLadder(int movesCount, string playerName)
         {
             Result result = new Result(movesCount, playerName);
-            if (topResults.Count == topResults.Capacity)
+            if (_topResults.Count == _topResults.Capacity)
             {
-                topResults[topResults.Count - 1] = result;
+                _topResults[_topResults.Count - 1] = result;
             }
             else
             {
-                topResults.Add(result);
+                _topResults.Add(result);
             }
-            topResults.Sort();
+
+            SortResults();
+        }
+
+        /// <summary>
+        /// This method sortResults alphabetically
+        /// </summary>
+        public void SortResults()
+        {
+            _topResults.Sort();
         }
     }
 }
