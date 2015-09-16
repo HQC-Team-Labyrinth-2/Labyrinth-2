@@ -1,6 +1,8 @@
 High-Quality Programming Code – Team Projects
 =============================================
 
+[![Build status](https://ci.appveyor.com/api/projects/status/hf55po6v7sjwbw6l?svg=true)](https://ci.appveyor.com/project/GoranGit/labyrinth-2)
+
 Overview
 --------
 
