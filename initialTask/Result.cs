@@ -12,8 +12,8 @@ namespace Labyrinth
 
         public Result(int movesCount, string playerName)
         {
-            this.movesCount = movesCount;
-            this.playerName = playerName;
+            this.MovesCount = movesCount;
+            this.PlayerName = playerName;
         }
 
         public int MovesCount 
@@ -22,12 +22,34 @@ namespace Labyrinth
             {
                 return this.movesCount;
             }
+            private set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException("Moves count must be greater than 0!");
+                }
+                else
+                {
+                    this.movesCount = value;
+                }
+            }
         }
         public string PlayerName 
         {
             get
             {
                 return this.playerName;
+            }
+            private set
+            {
+                if (String.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("Player name can't be null or empty string!");
+                }
+                else
+                {
+                    this.playerName = value;
+                }
             }
         }
 

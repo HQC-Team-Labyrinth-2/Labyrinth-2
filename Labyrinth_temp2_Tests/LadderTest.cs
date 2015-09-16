@@ -87,7 +87,7 @@ namespace Labyrinth_temp2_Tests
             var playerName = "toni";
             var capacity = ladder.GetTopResultsCapacity();
 
-            for (int i = capacity-1; i >= 0; i--)
+            for (int i = capacity; i >= 1; i--)
             {
                 ladder.AddResultInLadder(i, playerName+i);
             }
@@ -96,8 +96,8 @@ namespace Labyrinth_temp2_Tests
 
             var firstElement = ladder._TopResults()[0];
 
-            Assert.AreEqual(0, firstElement.MovesCount);
-            Assert.AreEqual("toni0", firstElement.PlayerName);
+            Assert.AreEqual(1, firstElement.MovesCount);
+            Assert.AreEqual("toni1", firstElement.PlayerName);
         }
 
         [TestMethod]
@@ -106,7 +106,7 @@ namespace Labyrinth_temp2_Tests
             var playerName = "toni";
             var capacity = ladder.GetTopResultsCapacity();
 
-            for (int i = 0; i < ladder.GetTopResultsCapacity() - 1; i++)
+            for (int i = 1; i <= ladder.GetTopResultsCapacity() - 1; i++)
             {
                 ladder.AddResultInLadder(i, playerName + i);
             }
@@ -122,7 +122,7 @@ namespace Labyrinth_temp2_Tests
             var capacity = ladder.GetTopResultsCapacity();
             var count = 0;
 
-            for (count = 0; count < ladder.GetTopResultsCapacity(); count++)
+            for (count = 1; count <= ladder.GetTopResultsCapacity(); count++)
             {
                 ladder.AddResultInLadder(count, playerName + count);
             }
@@ -140,7 +140,7 @@ namespace Labyrinth_temp2_Tests
             var capacity = ladder.GetTopResultsCapacity();
             var count = 0;
 
-            for (count = 0; count < ladder.GetTopResultsCapacity(); count++)
+            for (count = 1; count <= ladder.GetTopResultsCapacity(); count++)
             {
                 ladder.AddResultInLadder(count, playerName + count);
             }
@@ -164,14 +164,14 @@ namespace Labyrinth_temp2_Tests
             var playerName = "toni";
             StringBuilder expectedResult = new StringBuilder();
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 ladder.AddResultInLadder(i, playerName);
             }
 
             var result = ladder.ReturnLadder();
-            expectedResult.AppendLine("1. toni --> 0 moves");
-            expectedResult.AppendLine("2. toni --> 1 moves");
+            expectedResult.AppendLine("1. toni --> 1 moves");
+            expectedResult.AppendLine("2. toni --> 2 moves");
 
             Assert.AreEqual(expectedResult.ToString(), result);
 
