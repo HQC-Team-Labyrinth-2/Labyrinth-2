@@ -1,12 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.UI.Input
+﻿namespace Labyrinth.ConsoleUI.Input
 {
-    class ConsoleInputProvider
+    using System;
+    using Labyrinth.Core.Common;
+    using Labyrinth.Core.Input.Contracts;
+    using Labyrinth.Core.Output.Contracts;
+
+    public class ConsoleInputProvider : IInputProvider
     {
+        public string GetInput(IRenderer console)
+        {
+            console.PrintGetInputMessage(GlobalMessages.GetInputMessage);
+            string inputLine = Console.ReadLine();
+            return inputLine;
+        }
+
+        public string GetPlayerName()
+        {
+            return Console.ReadLine();
+        }
     }
 }

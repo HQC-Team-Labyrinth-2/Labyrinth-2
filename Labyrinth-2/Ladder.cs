@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-    class Ladder
+    public class Ladder
     {
         private const int TOP_RESULTS_CAPACITY = 5;
         private List<Result> topResults;
