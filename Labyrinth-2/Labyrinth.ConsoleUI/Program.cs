@@ -14,16 +14,7 @@ namespace Labyrinth.ConsoleUI
     {
         static void Main(string[] args)
         {
-            while (1 == 1)
-            {
-               GameEngine gameEngine = new GameEngine(new ConsoleRender(),new ConsoleInputProvider());
-               
-                var gameInitializationStrategy = new StandardGameInitializationStrategy();
-
-                gameEngine.Initialize(gameInitializationStrategy);
-
-                gameEngine.Start();
-            }
+           LabyrinthFacade.Start(new ConsoleRender(), new ConsoleInputProvider());
         }
     }
 }

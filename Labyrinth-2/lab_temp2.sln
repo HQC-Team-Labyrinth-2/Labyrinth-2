@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth_temp2", "Labyrinth_temp2.csproj", "{810F1946-F8BE-4D85-ACAD-6ACD92FD2439}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth.Core", "..\Labyrinth\Labyrinth.Core.csproj", "{13294FAA-16DD-4241-8463-C6416CEAE0AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth.ConsoleUI", "Labyrinth.ConsoleUI\Labyrinth.ConsoleUI.csproj", "{99EF80FB-51E3-469A-9DEE-402B856A5278}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{810F1946-F8BE-4D85-ACAD-6ACD92FD2439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{810F1946-F8BE-4D85-ACAD-6ACD92FD2439}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{810F1946-F8BE-4D85-ACAD-6ACD92FD2439}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{810F1946-F8BE-4D85-ACAD-6ACD92FD2439}.Release|Any CPU.Build.0 = Release|Any CPU
 		{13294FAA-16DD-4241-8463-C6416CEAE0AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{13294FAA-16DD-4241-8463-C6416CEAE0AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13294FAA-16DD-4241-8463-C6416CEAE0AF}.Release|Any CPU.ActiveCfg = Release|Any CPU

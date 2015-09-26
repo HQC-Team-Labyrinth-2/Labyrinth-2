@@ -9,7 +9,7 @@
     {
         public string GetInput(IRenderer console)
         {
-            console.PrintGetInputMessage(GlobalMessages.GetInputMessage);
+            console.PrintMessage(GlobalMessages.GetInputMessage);
             string inputLine = Console.ReadLine();
             return inputLine;
         }
