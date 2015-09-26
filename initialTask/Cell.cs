@@ -1,18 +1,13 @@
-﻿using System;
+﻿using Labyrinth.configClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace Labyrinth
 {
-   public class Cell
+    public class Cell
     {
-
-        public const int maxSize=Labyrinth.LABYRINTH_SIZE;
-        public const char CELL_EMPTY_VALUE = '-';
-        public const char CELL_WALL_VALUE = 'X';
-    
-      
         private int row;
         private int col;
         private char valueChar;
@@ -39,11 +34,7 @@ namespace Labyrinth
             }
             set
             {
-                if(value>=maxSize || value<0)
-                {
-                    throw new ArgumentOutOfRangeException("invalid row was written");
-                }
-                this.row = value;
+                this.row = Validator.CheckIntegerInRange(value, 0, Constants.LABYRINTH_SIZE, "Row");
             }
         }
 
@@ -55,11 +46,7 @@ namespace Labyrinth
             }
             set
             {
-                if (value >= maxSize || value < 0)
-                {
-                    throw new ArgumentOutOfRangeException("invalid row was written");
-                }
-                this.col = value;
+                this.col = Validator.CheckIntegerInRange(value, 0, Constants.LABYRINTH_SIZE, "Col");
             }
         }
 
@@ -71,17 +58,13 @@ namespace Labyrinth
             }
             set
             {
-                if (value != 'X' && value != '-' && value != '*')
-                {
-                    throw new ArgumentException("invalid char  was written");
-                }
-                this.valueChar = value;
+                this.valueChar = Validator.AllowedSymbols(value);
             }
         }
 
         public bool IsEmpty()
         {
-            if(this.ValueChar == CELL_EMPTY_VALUE)
+            if (this.ValueChar == Constants.CELL_EMPTY_VALUE)
             {
                 return true;
             }

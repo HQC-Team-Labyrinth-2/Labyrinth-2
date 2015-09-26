@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Labyrinth.configClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -167,16 +168,16 @@ namespace Labyrinth
                     char charValue;
                     if (cellRandomValue == 0)
                     {
-                        charValue = Cell.CELL_EMPTY_VALUE;
+                        charValue = Constants.CELL_EMPTY_VALUE;
                     }
                     else
                     {
-                        charValue = Cell.CELL_WALL_VALUE;
+                        charValue = Constants.CELL_WALL_VALUE;
                     }
                     this.labyrinth[row,col] = new Cell(row, col, charValue);
                 }
             }
-            this.labyrinth[LabyrintStartRow, LabyrinthStartCol ].ValueChar = '*';
+            this.labyrinth[LabyrintStartRow, LabyrinthStartCol ].ValueChar = Constants.CELL_PLAYER_VALUE;
 
             bool exitPathExists = ExitPathExists();
             if (!exitPathExists)
