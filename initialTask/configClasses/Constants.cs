@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth.configClasses
 {
-    public static class Validator
+    public static class Constants
     {
     }
 }
