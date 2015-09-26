@@ -15,7 +15,7 @@ namespace Labyrinth
       
         private int row;
         private int col;
-        private int valueChar;
+        private char valueChar;
 
         public Cell()
         {
@@ -39,7 +39,7 @@ namespace Labyrinth
             }
             set
             {
-                if(value>=maxSize || value<=0)
+                if(value>=maxSize || value<0)
                 {
                     throw new ArgumentOutOfRangeException("invalid row was written");
                 }
@@ -55,7 +55,7 @@ namespace Labyrinth
             }
             set
             {
-                if (value >= maxSize || value <= 0)
+                if (value >= maxSize || value < 0)
                 {
                     throw new ArgumentOutOfRangeException("invalid row was written");
                 }
@@ -63,7 +63,7 @@ namespace Labyrinth
             }
         }
 
-        public int ValueChar
+        public char ValueChar
         {
             get
             {
@@ -71,7 +71,7 @@ namespace Labyrinth
             }
             set
             {
-                if (value != 'X' && value != '-')
+                if (value != 'X' && value != '-' && value != '*')
                 {
                     throw new ArgumentException("invalid char  was written");
                 }
