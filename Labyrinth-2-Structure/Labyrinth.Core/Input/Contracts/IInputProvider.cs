@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Input.Contracts
+﻿namespace Labyrinth.Core.Input.Contracts
 {
-    interface IInputProvider
+    using Labyrinth.Core.Output.Contracts;
+
+    public interface IInputProvider
     {
+        string GetInput(IRenderer outputRenderer);
+        string GetPlayerName();
     }
 }

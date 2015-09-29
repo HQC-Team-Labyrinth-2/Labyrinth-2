@@ -1,8 +1,19 @@
-﻿namespace Labyrinth.Common
+﻿namespace Labyrinth.Core.Common
 {
     using System;
 
     public class Constants
     {
+        public const char StandardGameCellEmptyValue = '-';
+        public const char StandardGameCellWallValue = 'X';
+
+        public const char StandardGamePlayerChar = '*';
+
+        public const int StandardGameLabyrinthRows = 9;
+        public const int StandardGameLabyrinthCols = 9;
+
+        public const int StandardGameNumberOfPlayers = 1;
+
+        public const int StandardGameTopResultCapacity = 5;
     }
 }

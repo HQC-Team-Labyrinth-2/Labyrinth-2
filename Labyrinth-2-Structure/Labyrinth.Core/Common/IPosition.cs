@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Labyrinth.Common
+namespace Labyrinth.Core.Common
 {
-    class ValidationProvider
+    public interface IPosition
     {
+        int Row { get; set; }
+
+        int Column { get; set; }
     }
 }

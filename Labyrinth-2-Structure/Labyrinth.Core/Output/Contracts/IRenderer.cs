@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Output.Contracts
+﻿namespace Labyrinth.Core.Output.Contracts
 {
-    interface IRenderer
+    using Labyrinth.Core.PlayField.Contracts;
+
+    public interface IRenderer
     {
+        void PrintPlayField(IPlayField playField);
+
+        void PrintMessage(string msg);
     }
 }

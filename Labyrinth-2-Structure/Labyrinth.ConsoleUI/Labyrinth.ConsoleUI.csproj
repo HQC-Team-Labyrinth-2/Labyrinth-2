@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Labyrinth\Labyrinth.Core.csproj">
+    <ProjectReference Include="..\Labyrinth.Core\Labyrinth.Core.csproj">
       <Project>{13294faa-16dd-4241-8463-c6416ceae0af}</Project>
       <Name>Labyrinth.Core</Name>
     </ProjectReference>

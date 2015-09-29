@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Common
+﻿namespace Labyrinth.Core.Common
 {
-    class Move
+    using System;
+
+    public class Move
     {
+        public Move(Position from, Position to)
+        {
+            this.From = from;
+            this.To = to;
+        }
+
+        public Position From { get; private set; }
+
+        public Position To { get; private set; }
     }
+
 }
+
