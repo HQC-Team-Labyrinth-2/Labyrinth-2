@@ -11,6 +11,7 @@
     using Labyrinth.Core.PlayField;
     using Labyrinth.Core.Score;
     using Labyrinth.Core.Score.Contracts;
+    using Labyrinth.Common.Contracts;
   
 
     public class StandardGameEngine : IGameEngine
@@ -19,6 +20,7 @@
         private readonly IInputProvider input;    
         private readonly ILadder ladder;
         private IPlayField playField;
+        private IPlayFieldGenerator labyrinthGenerator;
 
         private ICharacter player;
         private IPosition CurrentPlayerPosition;
@@ -53,7 +55,11 @@
 
         public void Initialize()
         {
-            this.playField = new PlayField(new Position(Constants.StandardGameLabyrinthRows / 2, Constants.StandardGameLabyrinthCols / 2));
+            IRandomGenerator random = RandomGenerator.Instance;
+
+            IPlayFieldGenerator labyrinthGenerator = new StandardPlayFieldGenerator(new Position(Constants.StandardGameLabyrinthRows / 2, Constants.StandardGameLabyrinthCols / 2));
+            this.playField = new PlayField(labyrinthGenerator,new Position(Constants.StandardGameLabyrinthRows / 2, Constants.StandardGameLabyrinthCols / 2));
+            this.playField.Initialize(random);
         }
 
         public void Start()

@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labyrinth.Common.Contracts;
 
 //TODO: SOme of this methods shuld be moved in PlayFieldGenerator interface!
 namespace Labyrinth.Core.PlayField.Contracts
 {
     public interface IPlayField
     {
+        void Initialize(IRandomGenerator generator);
+
         int NumberOfRows { get; }
 
         int NumberOfCols { get; }

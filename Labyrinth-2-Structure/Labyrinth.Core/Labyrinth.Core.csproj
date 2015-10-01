@@ -58,6 +58,8 @@
     <Compile Include="Input\Contracts\IInputProvider.cs" />
     <Compile Include="LabyrinthFacade.cs" />
     <Compile Include="Players\Character.cs" />
+    <Compile Include="PlayField\Contracts\IPlayFieldGenerator.cs" />
+    <Compile Include="PlayField\StandardPlayFieldGenerator.cs" />
     <Compile Include="Score\Contracts\ILadder.cs" />
     <Compile Include="Score\Ladder.cs" />
     <Compile Include="PlayField\Cell.cs" />
