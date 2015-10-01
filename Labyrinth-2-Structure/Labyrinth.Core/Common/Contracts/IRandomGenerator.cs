@@ -2,6 +2,6 @@
 {
     public interface IRandomGenerator
     {
-            
+        int GenerateNext(int from, int to);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Labyrinth.Core.Common;
+﻿using Labyrinth.Common.Contracts;
+using Labyrinth.Core.Common;
 using Labyrinth.Core.Players.Contracts;
 using Labyrinth.Core.PlayField.Contracts;
 using System;
@@ -6,9 +7,7 @@ using System.Collections.Generic;
 
 
 namespace Labyrinth.Core.PlayField
-{
-    //TODO: Implement a RandomGenerator class and interface to decouple, use singleton for Random instance, And strategy patterrn so randomization stratgy can be  easy changed, in implemented strategy  use adapret pattern to reuse functionality of Random class in .net. 
-
+{   
     //TODO: Implement  a PlayField generator class that will keeps all methods for generating playfield.
     public class PlayField : IPlayField
     {
@@ -23,7 +22,7 @@ namespace Labyrinth.Core.PlayField
             this.NumberOfRows = rows;
             this.NumberOfCols = colums;
             this.PlayerPosition = playerPosition;
-            Random random = new Random();
+            RandomGenerator random = RandomGenerator.Instance;
             GenerateLabyrinth(random);
         }
 
@@ -43,7 +42,7 @@ namespace Labyrinth.Core.PlayField
             private set;
         }
 
-        private void GenerateLabyrinth(Random rand)
+        private void GenerateLabyrinth(IRandomGenerator rand)
         {
             this.playField = new Cell[this.NumberOfRows, this.NumberOfCols];
 
@@ -51,7 +50,7 @@ namespace Labyrinth.Core.PlayField
             {
                 for (int col = 0; col < this.NumberOfCols; col++)
                 {
-                    int cellRandomValue = rand.Next(0, 2);
+                    int cellRandomValue = rand.GenerateNext(0, 2);
 
                     char charValue;
                     if (cellRandomValue == 0)

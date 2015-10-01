@@ -52,6 +52,7 @@
     <Compile Include="Common\IPosition.cs" />
     <Compile Include="Common\Move.cs" />
     <Compile Include="Common\Position.cs" />
+    <Compile Include="Common\RandomGenerator.cs" />
     <Compile Include="GameEngine\Contracts\IGameEngine.cs" />
     <Compile Include="GameEngine\GameEngine.cs" />
     <Compile Include="Input\Contracts\IInputProvider.cs" />
