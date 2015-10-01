@@ -12,6 +12,7 @@
     using Labyrinth.Core.Score;
     using Labyrinth.Core.Score.Contracts;
     using Labyrinth.Common.Contracts;
+    using Labyrinth.Core.Common.Contracts;
   
 
     public class StandardGameEngine : IGameEngine
@@ -166,7 +167,7 @@
 
                     break;
                 case "top":
-                    ladder.PrintLadder();
+                    renderer.Show((IContentProvider)ladder);
                     break;
                 case "exit":
                     this.renderer.PrintMessage(GlobalMessages.GoodbyeMessage);

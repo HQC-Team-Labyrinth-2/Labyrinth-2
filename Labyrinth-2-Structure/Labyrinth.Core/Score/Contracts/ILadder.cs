@@ -2,11 +2,8 @@
 namespace Labyrinth.Core.Score.Contracts
 {
     public interface ILadder
-
     {
         void AddResultInLadder(int movesCount, string playerName);
-
-        void PrintLadder();
 
         bool ResultQualifiesInLadder(int result);
 
