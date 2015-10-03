@@ -1,7 +1,5 @@
 ﻿namespace Labyrinth.Core.Common
 {
-    using System;
-
     public class Move
     {
         public Move(Position from, Position to)

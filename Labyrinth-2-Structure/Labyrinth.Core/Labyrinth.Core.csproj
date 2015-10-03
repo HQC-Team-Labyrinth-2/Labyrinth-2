@@ -55,6 +55,7 @@
     <Compile Include="Common\RandomGenerator.cs" />
     <Compile Include="GameEngine\Contracts\IGameEngine.cs" />
     <Compile Include="GameEngine\GameEngine.cs" />
+    <Compile Include="GameEngine\StandardGameEngine.cs" />
     <Compile Include="Input\Contracts\IInputProvider.cs" />
     <Compile Include="LabyrinthFacade.cs" />
     <Compile Include="Players\Character.cs" />

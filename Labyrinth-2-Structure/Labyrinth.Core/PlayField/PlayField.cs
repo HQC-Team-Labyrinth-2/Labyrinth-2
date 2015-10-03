@@ -12,7 +12,8 @@ namespace Labyrinth.Core.PlayField
     public class PlayField : IPlayField
     {
         private ICell[,] playField;
-        private IPlayFieldGenerator labyrinthGenerator;
+        private IPlayFieldGenerator playFieldGenerator;
+       
 
         public PlayField(IPlayFieldGenerator generator,
             IPosition playerPosition,
@@ -20,7 +21,7 @@ namespace Labyrinth.Core.PlayField
             int colums = Constants.StandardGameLabyrinthCols
                         )
         {
-            this.labyrinthGenerator = generator;
+            this.playFieldGenerator = generator;
             this.NumberOfRows = rows;
             this.NumberOfCols = colums;
             this.PlayerPosition = playerPosition;
@@ -28,7 +29,7 @@ namespace Labyrinth.Core.PlayField
 
         public void Initialize(IRandomGenerator random)
         {
-           this.playField = this.labyrinthGenerator.GeneratePlayField(random);
+           this.playField = this.playFieldGenerator.GeneratePlayField(random);
         }
 
         public IPosition PlayerPosition { get; private set; }
