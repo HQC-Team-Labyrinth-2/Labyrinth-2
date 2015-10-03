@@ -1,9 +1,11 @@
-﻿namespace Labyrinth.Core.PlayField
+﻿using System;
+
+namespace Labyrinth.Core.PlayField
 {
     using Labyrinth.Core.Common;
     using Labyrinth.Core.PlayField.Contracts;
     
-    public class Cell:ICell
+    public class Cell:ICell, ICloneable
     {
         public Cell(IPosition position, char value)
         {
@@ -23,6 +25,13 @@
             }
 
             return false;
+        }
+
+        public object Clone()
+        {
+          Cell newCell = (Cell)this.MemberwiseClone();
+            newCell.Position = (Position)((ICloneable) newCell.Position).Clone();
+            return newCell;
         }
     }
 }

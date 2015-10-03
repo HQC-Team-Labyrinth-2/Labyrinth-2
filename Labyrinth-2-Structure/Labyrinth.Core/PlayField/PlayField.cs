@@ -7,13 +7,12 @@ using System.Collections.Generic;
 
 
 namespace Labyrinth.Core.PlayField
-{   
+{
     //TODO: Implement  a PlayField generator class that will keeps all methods for generating playfield.
-    public class PlayField : IPlayField
+    public class PlayField : IPlayField, IMemorizable
     {
         private ICell[,] playField;
         private IPlayFieldGenerator playFieldGenerator;
-       
 
         public PlayField(IPlayFieldGenerator generator,
             IPosition playerPosition,
@@ -29,7 +28,7 @@ namespace Labyrinth.Core.PlayField
 
         public void Initialize(IRandomGenerator random)
         {
-           this.playField = this.playFieldGenerator.GeneratePlayField(random);
+            this.playField = this.playFieldGenerator.GeneratePlayField(random);
         }
 
         public IPosition PlayerPosition { get; private set; }
@@ -92,7 +91,7 @@ namespace Labyrinth.Core.PlayField
 
         public ICell GetCell(IPosition position)
         {
-            return playField[position.Row,position.Column];
+            return this.playField[position.Row, position.Column];
         }
 
         //TODO: this function should be in the player class
@@ -123,6 +122,17 @@ namespace Labyrinth.Core.PlayField
             this.playField[cell.Position.Row, cell.Position.Column].ValueChar = Constants.StandardGameCellEmptyValue;
             this.PlayerPosition = playField[newRow, newCol].Position;
             return true;
+        }
+
+        public IMemento SaveMemento()
+        {
+            return new PlayFieldMemento(this.playField, this.PlayerPosition);
+        }
+
+        public void RestoreMemento(IMemento memento)
+        {
+            this.playField = memento.PlayField;
+            this.PlayerPosition = memento.PlayerPosition;
         }
     }
 }

@@ -19,7 +19,8 @@
         private readonly IRenderer renderer;
         private readonly IInputProvider input;
         private readonly ILadder ladder;
-    
+        private MementoCaretaker memory;
+
         private ICharacter player;
         private IPosition CurrentPlayerPosition;
 
@@ -55,7 +56,7 @@
             this.playField.Initialize(randomGenerator);
         }
 
-        public override  void Start()
+        public override void Start()
         {
             int movesCount = 0;
 
@@ -150,6 +151,11 @@
                 case "l":
                 case "r":
                     //fallthrough
+                     if (this.memory == null)
+                        {
+                            this.memory = new MementoCaretaker();
+                        }
+                        this.memory.Memento = ((IMemorizable) this.playField).SaveMemento();
                     bool moveDone =
                         this.TryMove(inputToLower, playField);
                     if (moveDone == true)
@@ -157,6 +163,13 @@
                         movesCount++;
                     }
 
+                    break;
+                case "z":
+                    if (this.memory != null && this.memory.Memento!=null)
+                    {
+                        ((IMemorizable)this.playField).RestoreMemento(memory.Memento);
+                        movesCount--;
+                    }
                     break;
                 case "top":
                     renderer.Show((IContentProvider)ladder);
