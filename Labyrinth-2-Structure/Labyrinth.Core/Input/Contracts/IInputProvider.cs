@@ -5,6 +5,7 @@
     public interface IInputProvider
     {
         string GetInput(IRenderer outputRenderer);
+
         string GetPlayerName();
     }
 }

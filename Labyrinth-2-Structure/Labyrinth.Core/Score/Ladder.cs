@@ -21,7 +21,8 @@
 
         private Ladder()
         {
-            topResults = new List<Result>();
+            this.topResults = new List<Result>();
+            this.Capacity = Constants.StandardGameTopResultCapacity;
         }
 
         public static Ladder Instance

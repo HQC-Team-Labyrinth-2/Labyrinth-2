@@ -1,10 +1,6 @@
 ﻿using Labyrinth.Common.Contracts;
 using Labyrinth.Core.Common;
-using Labyrinth.Core.Players.Contracts;
 using Labyrinth.Core.PlayField.Contracts;
-using System;
-using System.Collections.Generic;
-
 
 namespace Labyrinth.Core.PlayField
 {
@@ -76,17 +72,11 @@ namespace Labyrinth.Core.PlayField
             }
         }
 
-
-        //TODO: implement method
-        public void AddPlayer(ICharacter player, IPosition position)
-        {
-            throw new NotImplementedException();
-        }
-
-        //TODO: implement method
-        public void RemovePlayer(ICharacter player, IPosition position)
-        {
-            throw new NotImplementedException();
+        public ICell[,] PlayFieldMatrix {
+            get
+            {
+                return this.playField;
+            }
         }
 
         public ICell GetCell(IPosition position)
@@ -96,13 +86,13 @@ namespace Labyrinth.Core.PlayField
 
         //TODO: this function should be in the player class
         //TODO: in this function missing validation  - if player hit in the wall the game should be over!
-        public bool TryMove(ICell cell, Direction direction)
+        public bool TryMove(ICell current, Direction direction)
         {
             int newRow;
             int newCol;
             FindNewCellCoordinates(
-                cell.Position.Row,
-                cell.Position.Column,
+                current.Position.Row,
+                current.Position.Column,
                 direction,
                 out newRow,
                 out newCol);
@@ -119,14 +109,14 @@ namespace Labyrinth.Core.PlayField
             }
 
             this.playField[newRow, newCol].ValueChar = Constants.StandardGamePlayerChar;
-            this.playField[cell.Position.Row, cell.Position.Column].ValueChar = Constants.StandardGameCellEmptyValue;
-            this.PlayerPosition = playField[newRow, newCol].Position;
+            this.playField[current.Position.Row, current.Position.Column].ValueChar = Constants.StandardGameCellEmptyValue;
+            this.PlayerPosition = new Position(newRow,newCol);
             return true;
         }
 
         public IMemento SaveMemento()
         {
-            return new PlayFieldMemento(this.playField, this.PlayerPosition);
+            return new PlayFieldMemento(this);
         }
 
         public void RestoreMemento(IMemento memento)

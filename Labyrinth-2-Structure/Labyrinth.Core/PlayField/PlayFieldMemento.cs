@@ -8,14 +8,14 @@ using Labyrinth.Core.PlayField.Contracts;
 
 namespace Labyrinth.Core.PlayField
 {
-    public class PlayFieldMemento:IMemento
+    public class PlayFieldMemento : IMemento
     {
         private ICell[,] playField;
 
-        public PlayFieldMemento(ICell[,] playField, IPosition playerPosition)
+        public PlayFieldMemento(IPlayField playField)
         {
-            this.PlayField = playField;
-          this.PlayerPosition = new Position(playerPosition.Row,playerPosition.Column);
+            this.PlayField = playField.PlayFieldMatrix;
+            this.PlayerPosition = new Position(playField.PlayerPosition.Row, playField.PlayerPosition.Column);
         }
 
         public ICell[,] PlayField
@@ -28,20 +28,23 @@ namespace Labyrinth.Core.PlayField
             {
                 if (value == null)
                 {
-                    throw  new NullReferenceException();
+                    //  throw  new NullReferenceException();
                 }
-                if (this.playField == null)
+                else
                 {
-                    this.playField = new ICell[value.GetLength(0),value.GetLength(1)];
-                }
-
-                for (int i = 0; i < value.GetLength(0); i++)
-                {
-                    for (int j = 0; j < value.GetLength(1); j++)
+                    if (this.playField == null)
                     {
-                        this.playField[i, j] = (ICell) (((ICloneable) value[i, j]).Clone());
+                        this.playField = new ICell[value.GetLength(0), value.GetLength(1)];
                     }
-                } 
+
+                    for (int i = 0; i < value.GetLength(0); i++)
+                    {
+                        for (int j = 0; j < value.GetLength(1); j++)
+                        {
+                            this.playField[i, j] = (ICell)(((ICloneable)value[i, j]).Clone());
+                        }
+                    }
+                }
             }
         }
 

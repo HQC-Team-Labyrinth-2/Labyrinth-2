@@ -1,7 +1,5 @@
 ﻿namespace Labyrinth.Core.Common
 {
-    using System;
-
     public class Constants
     {
         public const char StandardGameCellEmptyValue = '-';

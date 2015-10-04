@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Labyrinth.Core.PlayField.Contracts;
-
-namespace Labyrinth.Core.PlayField
+﻿namespace Labyrinth.Core.PlayField
 {
-    public class MementoCaretaker
+    using System.Collections.Generic;
+    using Labyrinth.Core.PlayField.Contracts;
+
+    public class MementoCaretaker:IMementoCaretaker
     {
-        public IMemento Memento { get; set; }
+        public MementoCaretaker(ICollection<IMemento> mementoes )
+        {
+            this.Memento = mementoes;
+        }
+
+        public ICollection<IMemento> Memento { get; set; }
     }
 }

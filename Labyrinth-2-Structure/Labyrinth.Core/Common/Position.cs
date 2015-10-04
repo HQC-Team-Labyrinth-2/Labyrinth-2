@@ -4,7 +4,7 @@ namespace Labyrinth.Core.Common
 {
     public class Position:IPosition, ICloneable
     {
-        public Position(int row, int col)
+        public Position(int row = Constants.StandardGameLabyrinthRows/2, int col = Constants.StandardGameLabyrinthCols/2)
         {
             this.Row = row;
             this.Column = col;
