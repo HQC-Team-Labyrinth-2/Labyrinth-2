@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Labyrinth.Core.Common.Logger
 {
-    interface ILogger
+    public interface ILogger
     {
         void Log(String message);
     }

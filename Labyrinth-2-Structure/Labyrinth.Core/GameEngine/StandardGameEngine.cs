@@ -1,4 +1,6 @@
-﻿namespace Labyrinth.Core.GameEngine
+﻿using Labyrinth.Core.Common.Logger;
+
+namespace Labyrinth.Core.GameEngine
 {
     using System;
     using Labyrinth.Core.CommandFactory.Contracts;
@@ -18,6 +20,7 @@
         private readonly ILadder ladder;
         private ICommandFactory commandFactory;
         private ICommandContext commandContext;
+        private ILogger logger;
         private int movesCount;
 
         public StandardGameEngine(
@@ -25,7 +28,8 @@
             IInputProvider inputProvider,
             IPlayField playField, 
             ICommandFactory commandFactory,
-            ICommandContext commandContext)
+            ICommandContext commandContext,
+            ILogger logger)
             : base(playField)
         {
             this.renderer = renderer;
@@ -34,6 +38,7 @@
             this.commandFactory = commandFactory;
             this.commandContext = commandContext;
             this.commandContext.PlayField = this.playField;
+            this.logger = logger;
         }
 
         public override void Initialize(IRandomGenerator randomGenerator)
@@ -45,6 +50,7 @@
         public override void Start()
         {
             string inputCommand = String.Empty;
+            logger.Log("Start game");
 
             while (!this.IsGameOver(this.playField) && inputCommand != "restart")
             {
@@ -79,6 +85,7 @@
                 currentCol == Constants.StandardGameLabyrinthCols - 1)
             {
                 isGameOver = true;
+                logger.Log("Game over");
             }
 
             return isGameOver;
@@ -92,6 +99,7 @@
 
             int move = command.Execute(this.commandContext);
 
+            logger.Log("Executed command - "+command.GetName());
             this.movesCount += move;
         }
     }

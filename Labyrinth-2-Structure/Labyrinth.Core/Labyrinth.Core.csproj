@@ -68,6 +68,9 @@
     <Compile Include="Common\GlobalErrorMessages.cs" />
     <Compile Include="Common\GlobalMessages.cs" />
     <Compile Include="Common\IPosition.cs" />
+    <Compile Include="Common\Logger\ConsoleLogger.cs" />
+    <Compile Include="Common\Logger\FileLogger.cs" />
+    <Compile Include="Common\Logger\ILogger.cs" />
     <Compile Include="Common\Position.cs" />
     <Compile Include="Common\RandomGenerator.cs" />
     <Compile Include="GameEngine\Contracts\IGameEngine.cs" />

@@ -1,4 +1,6 @@
-﻿namespace Labyrinth.Core
+﻿using Labyrinth.Core.Common.Logger;
+
+namespace Labyrinth.Core
 {
     using System.Collections.Generic;
     using Labyrinth.Common.Contracts;
@@ -13,6 +15,7 @@
     using Labyrinth.Core.Commands;
     using Labyrinth.Core.GameEngine;
     using Labyrinth.Core.GameEngine.Contracts;
+    using Labyrinth.Core.Common.Logger;
     using Ninject.Modules;
 
     public class Bindings:NinjectModule
@@ -30,6 +33,7 @@
             Bind<ICollection<IMemento>>().To<List<IMemento>>();
             Bind<IMementoCaretaker>().To<MementoCaretaker>();
             Bind<ICommandContext>().To<CommandContext>();
+            Bind<ILogger>().ToConstant(FileLogger.Instance());
             Bind<IGameEngine>().To<StandardGameEngine>();
         }
     }

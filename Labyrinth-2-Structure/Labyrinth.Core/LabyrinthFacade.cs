@@ -6,6 +6,7 @@ using Labyrinth.Core.CommandFactory.Contracts;
 using Labyrinth.Core.Commands;
 using Labyrinth.Core.Commands.Contracts;
 using Labyrinth.Core.Common;
+using Labyrinth.Core.Common.Logger;
 using Labyrinth.Core.GameEngine.Contracts;
 using Labyrinth.Core.PlayField;
 using Labyrinth.Core.PlayField.Contracts;
@@ -48,7 +49,9 @@ namespace Labyrinth.Core
 
                 //ICommandContext commandContext = new CommandContext(playField,output,memory,ladder);
 
-                //IGameEngine gameEngine = new StandardGameEngine(output, input, playField, ladder,commandFacory,commandContext);
+                //ILogger logger = ConsoleLogger.Instance(); 
+
+                //IGameEngine gameEngine = new StandardGameEngine(output, input, playField, ladder,commandFacory,commandContext, logger);
 
 
 

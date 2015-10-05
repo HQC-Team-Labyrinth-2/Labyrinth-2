@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Labyrinth.Core.Common.Logger
 {
-    public sealed class ConsoleLogger
+    public sealed class ConsoleLogger : ILogger
     {
         private static ConsoleLogger logger = null;
 

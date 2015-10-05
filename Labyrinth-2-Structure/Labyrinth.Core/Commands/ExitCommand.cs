@@ -12,5 +12,10 @@
             Environment.Exit(0);
             return 0;
         }
+
+        public string GetName()
+        {
+            return "Exit";
+        }
     }
 }

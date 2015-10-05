@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Labyrinth.Core.Common.Logger
 {
-    public sealed class FileLogger
+    public sealed class FileLogger : ILogger
     {
         private static FileLogger logger = null;
 
@@ -26,8 +26,15 @@ namespace Labyrinth.Core.Common.Logger
 
         public void Log(string message)
         {
-            String textToLog = String.Format("Time:{0} Message:{1}\n", DateTime.Now, message);
-            File.AppendAllText("log.txt", textToLog);
+            String fileName = "log.txt";
+            if (!File.Exists(fileName))
+            {
+                File.WriteAllText(fileName, message);
+            }
+
+            String textToLog = String.Format("Time:{0} Message:{1}" + System.Environment.NewLine, DateTime.Now, message);
+            File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + fileName,
+                  textToLog);
         }
     }
 }

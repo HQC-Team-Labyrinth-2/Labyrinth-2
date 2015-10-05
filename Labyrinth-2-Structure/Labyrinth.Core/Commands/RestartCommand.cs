@@ -8,5 +8,10 @@
         {
             return 0;
         }
+
+        public string GetName()
+        {
+            return "Restart";
+        }
     }
 }

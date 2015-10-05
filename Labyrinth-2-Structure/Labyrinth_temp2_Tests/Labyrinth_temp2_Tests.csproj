@@ -58,6 +58,16 @@
     <Compile Include="ResultTest.cs" />
     <Compile Include="UserInputAndOutputTest.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Labyrinth.ConsoleUI\Labyrinth.ConsoleUI.csproj">
+      <Project>{99ef80fb-51e3-469a-9dee-402b856a5278}</Project>
+      <Name>Labyrinth.ConsoleUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Labyrinth.Core\Labyrinth.Core.csproj">
+      <Project>{13294faa-16dd-4241-8463-c6416ceae0af}</Project>
+      <Name>Labyrinth.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
