@@ -4,7 +4,7 @@ using Labyrinth.Common.Contracts;
 //TODO: SOme of this methods shuld be moved in PlayFieldGenerator interface!
 namespace Labyrinth.Core.PlayField.Contracts
 {
-    public interface IPlayField
+    public interface IPlayField:IMemorizable
     {
         void Initialize(IRandomGenerator generator);
 

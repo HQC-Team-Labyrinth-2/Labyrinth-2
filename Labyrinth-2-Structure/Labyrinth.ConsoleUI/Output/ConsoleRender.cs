@@ -1,16 +1,11 @@
-﻿using Labyrinth.Core.Common;
-using Labyrinth.Core.Common.Contracts;
-using Labyrinth.Core.Output.Contracts;
-using Labyrinth.Core.PlayField.Contracts;
-using Labyrinth.Core.Score.Contracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.ConsoleUI.Output
+﻿namespace Labyrinth.ConsoleUI.Output
 {
+    using System;
+    using Labyrinth.Core.Common;
+    using Labyrinth.Core.Common.Contracts;
+    using Labyrinth.Core.Output.Contracts;
+    using Labyrinth.Core.PlayField.Contracts;
+
     public class ConsoleRender : IRenderer
     {
         public void PrintPlayField(IPlayField playField)

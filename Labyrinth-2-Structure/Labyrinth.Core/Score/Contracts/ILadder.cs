@@ -1,7 +1,8 @@
-﻿using Labyrinth.Core.Output.Contracts;
+﻿using Labyrinth.Core.Common.Contracts;
+using Labyrinth.Core.Output.Contracts;
 namespace Labyrinth.Core.Score.Contracts
 {
-    public interface ILadder
+    public interface ILadder:IContentProvider
     {
         void AddResultInLadder(int movesCount, string playerName);
 

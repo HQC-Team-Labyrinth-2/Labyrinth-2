@@ -9,7 +9,7 @@
     {
         public int Execute(ICommandContext context)
         {
-            context.Memory.Memento.Add((((IMemorizable)context.PlayField).SaveMemento()));
+            context.Memory.Memento.Add(context.PlayField.SaveMemento());
 
             context.PlayField.TryMove(context.PlayField.GetCell(context.PlayField.PlayerPosition), Direction.Left);
 

@@ -7,7 +7,7 @@
     {
         public int Execute(ICommandContext context)
         {
-            context.Output.Show((IContentProvider)context.Ladder);
+            context.Output.Show(context.Ladder);
 
             return 0;
         }

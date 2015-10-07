@@ -12,7 +12,7 @@
             {
                 if (context.Memory.Memento.Count != 0)
                 { 
-                ((IMemorizable)context.PlayField).RestoreMemento(context.Memory.Memento.Last());
+                context.PlayField.RestoreMemento(context.Memory.Memento.Last());
                 context.Memory.Memento.Remove(context.Memory.Memento.Last());
                 }
 
