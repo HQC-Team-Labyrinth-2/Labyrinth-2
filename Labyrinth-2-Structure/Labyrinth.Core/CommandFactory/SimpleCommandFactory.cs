@@ -6,7 +6,7 @@
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.CommandFactory.Contracts;
 
-    public class SimpleCommandFactory:ICommandFactory
+    public class SimpleCommandFactory : ICommandFactory
     {
         private readonly IDictionary<string, ICommand> commandDictionary;
 
@@ -51,8 +51,9 @@
                     resultCommand = new UndoCommand();
                     break;
                 default:
-                    throw new ArgumentException("Incorect command "+command);
+                    throw new ArgumentException("Incorect command " + command);
             }
+
             this.commandDictionary.Add(command, resultCommand);
             return resultCommand;
         }

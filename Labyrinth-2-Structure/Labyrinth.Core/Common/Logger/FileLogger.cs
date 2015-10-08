@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Core.Common.Logger
+﻿namespace Labyrinth.Core.Common.Logger
 {
+    using System;
+    using System.IO;
+
     public sealed class FileLogger : ILogger
     {
         private static FileLogger logger = null;
@@ -21,20 +17,21 @@ namespace Labyrinth.Core.Common.Logger
             {
                 logger = new FileLogger();
             }
+
             return logger;
         }
 
         public void Log(string message)
         {
-            String fileName = "log.txt";
+            string fileName = "log.txt";
+
             if (!File.Exists(fileName))
             {
                 File.WriteAllText(fileName, message);
             }
 
-            String textToLog = String.Format("Time:{0} Message:{1}" + System.Environment.NewLine, DateTime.Now, message);
-            File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + fileName,
-                  textToLog);
+            string textToLog = string.Format("Time:{0} Message:{1}" + System.Environment.NewLine, DateTime.Now, message);
+            File.AppendAllText(AppDomain.CurrentDomain.BaseDirectory + fileName, textToLog);
         }
     }
 }

@@ -1,6 +1,7 @@
-﻿using Labyrinth.Core.Common;
-namespace Labyrinth.Core.PlayField.Contracts
+﻿namespace Labyrinth.Core.PlayField.Contracts
 {
+    using Labyrinth.Core.Common;
+
     public interface ICell
     {
         IPosition Position { get; }

@@ -12,18 +12,13 @@ using Labyrinth.Core.PlayField;
 using Labyrinth.Core.PlayField.Contracts;
 using Labyrinth.Core.Score;
 using Labyrinth.Core.Score.Contracts;
-using Ninject;
-
 namespace Labyrinth.Core
 {
-    using Labyrinth.Core.GameEngine;
-    using Labyrinth.Core.Input.Contracts;
-    using Labyrinth.Core.Output.Contracts;
-    using System.Collections.Generic;
+    using Ninject;
 
     public class LabyrinthFacade
     {
-        public static void Start(IRenderer output, IInputProvider input, IKernel kernel)
+        public static void Start(IKernel kernel)
         {
             while (true)
             {

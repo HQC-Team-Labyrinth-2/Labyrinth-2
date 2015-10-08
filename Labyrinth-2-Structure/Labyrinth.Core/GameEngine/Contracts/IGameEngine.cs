@@ -1,8 +1,8 @@
-﻿using Labyrinth.Common.Contracts;
-
-namespace Labyrinth.Core.GameEngine.Contracts
+﻿namespace Labyrinth.Core.GameEngine.Contracts
 {
-   public interface IGameEngine
+    using Labyrinth.Common.Contracts;
+
+    public interface IGameEngine
     {
         void Initialize(IRandomGenerator random);
 

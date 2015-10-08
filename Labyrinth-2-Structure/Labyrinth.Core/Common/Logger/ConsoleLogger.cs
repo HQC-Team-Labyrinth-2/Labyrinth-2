@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Core.Common.Logger
+﻿namespace Labyrinth.Core.Common.Logger
 {
+    using System;
+
     public sealed class ConsoleLogger : ILogger
     {
         private static ConsoleLogger logger = null;

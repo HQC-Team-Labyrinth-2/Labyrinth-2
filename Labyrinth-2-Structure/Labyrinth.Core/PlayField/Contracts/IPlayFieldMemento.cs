@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Labyrinth.Core.Common;
-
-namespace Labyrinth.Core.PlayField.Contracts
+﻿namespace Labyrinth.Core.PlayField.Contracts
 {
+    using Labyrinth.Core.Common;
+
     public interface IMemento
     {
         ICell[,] PlayField { get; set; }

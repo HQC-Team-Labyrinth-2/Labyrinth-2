@@ -1,17 +1,16 @@
-﻿using Labyrinth.Core.Common.Logger;
-
-namespace Labyrinth.Core.GameEngine
+﻿namespace Labyrinth.Core.GameEngine
 {
     using System;
+    using Labyrinth.Common.Contracts;
     using Labyrinth.Core.CommandFactory.Contracts;
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.Common.Logger;
     using Labyrinth.Core.Input.Contracts;
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
     using Labyrinth.Core.Score;
     using Labyrinth.Core.Score.Contracts;
-    using Labyrinth.Common.Contracts;
 
     public class StandardGameEngine : GameEngine
     {
@@ -24,9 +23,9 @@ namespace Labyrinth.Core.GameEngine
         private int movesCount;
 
         public StandardGameEngine(
-            IRenderer renderer, 
+            IRenderer renderer,
             IInputProvider inputProvider,
-            IPlayField playField, 
+            IPlayField playField,
             ICommandFactory commandFactory,
             ICommandContext commandContext,
             ILogger logger)
@@ -37,38 +36,38 @@ namespace Labyrinth.Core.GameEngine
             this.ladder = Ladder.Instance;
             this.commandFactory = commandFactory;
             this.commandContext = commandContext;
-            this.commandContext.PlayField = this.playField;
+            this.commandContext.PlayField = this.PlayField;
             this.logger = logger;
         }
 
         public override void Initialize(IRandomGenerator randomGenerator)
         {
-            this.playField.Initialize(randomGenerator);
+            this.PlayField.Initialize(randomGenerator);
             this.movesCount = 0;
         }
 
         public override void Start()
         {
-            string inputCommand = String.Empty;
-            logger.Log("Start game");
+            string inputCommand = string.Empty;
+            this.logger.Log("Start game");
 
-            while (!this.IsGameOver(this.playField) && inputCommand != "restart")
+            while (!this.IsGameOver(this.PlayField) && inputCommand != "restart")
             {
-                this.renderer.PrintPlayField(this.playField);
+                this.renderer.PrintPlayField(this.PlayField);
                 inputCommand = this.input.GetInput(this.renderer);
-                ProccessInput(inputCommand);
+                this.ProccessInput(inputCommand);
             }
 
             if (inputCommand != "restart")
             {
-                string congratulationMsg = String.Format(GlobalMessages.CongratulationMessage, this.movesCount);
+                string congratulationMsg = string.Format(GlobalMessages.CongratulationMessage, this.movesCount);
                 this.renderer.PrintMessage(congratulationMsg);
 
-                if (ladder.ResultQualifiesInLadder(this.movesCount))
+                if (this.ladder.ResultQualifiesInLadder(this.movesCount))
                 {
                     this.renderer.PrintMessage(GlobalMessages.EnterNameForScoreBoardMessage);
                     string name = this.input.GetPlayerName();
-                    ladder.AddResultInLadder(this.movesCount, name);
+                    this.ladder.AddResultInLadder(this.movesCount, name);
                 }
             }
         }
@@ -85,7 +84,7 @@ namespace Labyrinth.Core.GameEngine
                 currentCol == Constants.StandardGameLabyrinthCols - 1)
             {
                 isGameOver = true;
-                logger.Log("Game over");
+                this.logger.Log("Game over");
             }
 
             return isGameOver;
@@ -99,7 +98,7 @@ namespace Labyrinth.Core.GameEngine
 
             int move = command.Execute(this.commandContext);
 
-            logger.Log("Executed command - "+command.GetName());
+            this.logger.Log("Executed command - " + command.GetName());
             this.movesCount += move;
         }
     }

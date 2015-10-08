@@ -5,9 +5,9 @@
 
     public class RandomGenerator : IRandomGenerator
     {
-        private Random random;
         private static volatile RandomGenerator instance;
         private static object syncRoot = new Object();
+        private Random random;
 
         private RandomGenerator()
         {
@@ -22,8 +22,10 @@
                 {
                     lock (syncRoot)
                     {
-                        if (instance == null)
+                        if (instance == null) 
+                        { 
                             instance = new RandomGenerator();
+                        }
                     }
                 }
 

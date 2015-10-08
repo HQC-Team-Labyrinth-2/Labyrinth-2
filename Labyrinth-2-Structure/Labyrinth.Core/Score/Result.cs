@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Core.Score
+﻿namespace Labyrinth.Core.Score
 {
+    using System;
+
     //TODO:Implement a resultComparator class that implament function for compare two results
     public class Result : IComparable<Result>
     {
@@ -25,6 +21,7 @@ namespace Labyrinth.Core.Score
                 return this.movesCount;
             }
         }
+        
         public string PlayerName
         {
             get

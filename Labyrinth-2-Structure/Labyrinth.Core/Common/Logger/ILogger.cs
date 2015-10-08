@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Core.Common.Logger
+﻿namespace Labyrinth.Core.Common.Logger
 {
+    using System;
+
     public interface ILogger
     {
         void Log(String message);

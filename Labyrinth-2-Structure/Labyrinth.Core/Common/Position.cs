@@ -1,10 +1,10 @@
-﻿using System;
-
-namespace Labyrinth.Core.Common
+﻿namespace Labyrinth.Core.Common
 {
-    public class Position:IPosition, ICloneable
+    using System;
+
+    public class Position : IPosition, ICloneable
     {
-        public Position(int row = Constants.StandardGameLabyrinthRows/2, int col = Constants.StandardGameLabyrinthCols/2)
+        public Position(int row = Constants.StandardGameLabyrinthRows / 2, int col = Constants.StandardGameLabyrinthCols / 2)
         {
             this.Row = row;
             this.Column = col;

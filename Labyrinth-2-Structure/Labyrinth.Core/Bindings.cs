@@ -1,6 +1,4 @@
-﻿using Labyrinth.Core.Common.Logger;
-
-namespace Labyrinth.Core
+﻿namespace Labyrinth.Core
 {
     using System.Collections.Generic;
     using Labyrinth.Common.Contracts;

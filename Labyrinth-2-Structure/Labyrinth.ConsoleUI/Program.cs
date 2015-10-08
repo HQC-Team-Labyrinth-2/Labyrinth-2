@@ -22,7 +22,7 @@ namespace Labyrinth.ConsoleUI
             IKernel kernel = new StandardKernel();
             kernel.Load(Assembly.GetExecutingAssembly());
 
-           LabyrinthFacade.Start(new ConsoleRender(), new ConsoleInputProvider(),kernel);
+           LabyrinthFacade.Start(kernel);
         }   
     }
 

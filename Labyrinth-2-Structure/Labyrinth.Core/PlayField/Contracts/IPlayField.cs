@@ -1,22 +1,22 @@
-﻿using Labyrinth.Core.Common;
-using Labyrinth.Common.Contracts;
-
-//TODO: SOme of this methods shuld be moved in PlayFieldGenerator interface!
+﻿//TODO: SOme of this methods shuld be moved in PlayFieldGenerator interface!
 namespace Labyrinth.Core.PlayField.Contracts
 {
-    public interface IPlayField:IMemorizable
-    {
-        void Initialize(IRandomGenerator generator);
+    using Labyrinth.Common.Contracts;
+    using Labyrinth.Core.Common;
 
+    public interface IPlayField : IMemorizable
+    {
         ICell[,] PlayFieldMatrix { get; }
 
         int NumberOfRows { get; }
 
         int NumberOfCols { get; }
 
+        IPosition PlayerPosition { get; }
+
         ICell GetCell(IPosition position);
 
-        IPosition PlayerPosition { get; }
+        void Initialize(IRandomGenerator generator);
 
         bool TryMove(ICell cell, Direction direction);
     }
