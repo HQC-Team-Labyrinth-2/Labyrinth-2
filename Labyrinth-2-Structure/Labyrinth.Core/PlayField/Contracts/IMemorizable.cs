@@ -1,4 +1,5 @@
-﻿namespace Labyrinth.Core.PlayField.Contracts
+﻿
+namespace Labyrinth.Core.PlayField.Contracts
 {
     public interface IMemorizable
     {

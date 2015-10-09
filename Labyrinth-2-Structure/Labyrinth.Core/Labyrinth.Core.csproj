@@ -51,9 +51,12 @@
     <Compile Include="Bindings.cs" />
     <Compile Include="CommandFactory\Contracts\ICommandFactory.cs" />
     <Compile Include="CommandFactory\SimpleCommandFactory.cs" />
+    <Compile Include="Commands\Contracts\ICloneablePosition.cs" />
+    <Compile Include="Commands\MoveCommand.cs" />
     <Compile Include="Commands\CommandContext.cs" />
     <Compile Include="Commands\Contracts\ICommand.cs" />
     <Compile Include="Commands\Contracts\ICommandContext.cs" />
+    <Compile Include="Commands\Contracts\IPlayerCommand.cs" />
     <Compile Include="Commands\ExitCommand.cs" />
     <Compile Include="Commands\MoveDown.cs" />
     <Compile Include="Commands\MoveLeft.cs" />
@@ -65,6 +68,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Contracts\IRandomGenerator.cs" />
     <Compile Include="Common\Direction.cs" />
+    <Compile Include="Helpers\GameLostException.cs" />
     <Compile Include="Common\GlobalErrorMessages.cs" />
     <Compile Include="Common\GlobalMessages.cs" />
     <Compile Include="Common\IPosition.cs" />
@@ -73,15 +77,20 @@
     <Compile Include="Common\Logger\ILogger.cs" />
     <Compile Include="Common\Position.cs" />
     <Compile Include="Common\RandomGenerator.cs" />
+    <Compile Include="Common\ResourceManager.cs" />
+    <Compile Include="Common\Validator.cs" />
     <Compile Include="GameEngine\Contracts\IGameEngine.cs" />
     <Compile Include="GameEngine\GameEngine.cs" />
     <Compile Include="GameEngine\StandardGameEngine.cs" />
     <Compile Include="Input\Contracts\IInputProvider.cs" />
     <Compile Include="LabyrinthFacade.cs" />
+    <Compile Include="Player\Contracts\IPlayer.cs" />
+    <Compile Include="Player\Player.cs" />
+    <Compile Include="PlayField\Contracts\ICloneableCell.cs" />
     <Compile Include="PlayField\Contracts\IMementoCaretaker.cs" />
-    <Compile Include="PlayField\Contracts\IPlayFieldGenerator.cs" />
     <Compile Include="PlayField\Contracts\IMemorizable.cs" />
-    <Compile Include="PlayField\Contracts\IPlayFieldMemento.cs" />
+    <Compile Include="PlayField\Contracts\IPlayFieldGenerator.cs" />
+    <Compile Include="PlayField\Contracts\IMemento.cs" />
     <Compile Include="PlayField\MementoCaretaker.cs" />
     <Compile Include="PlayField\PlayFieldMemento.cs" />
     <Compile Include="PlayField\StandardPlayFieldGenerator.cs" />
@@ -98,6 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

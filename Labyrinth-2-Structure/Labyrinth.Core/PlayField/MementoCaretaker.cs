@@ -5,9 +5,9 @@
 
     public class MementoCaretaker : IMementoCaretaker
     {
-        public MementoCaretaker(ICollection<IMemento> mementoes)
+        public MementoCaretaker(ICollection<IMemento> mementos)
         {
-            this.Memento = mementoes;
+            this.Memento = mementos;
         }
 
         public ICollection<IMemento> Memento { get; set; }

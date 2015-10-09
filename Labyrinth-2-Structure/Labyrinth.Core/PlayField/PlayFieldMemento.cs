@@ -11,37 +11,28 @@ namespace Labyrinth.Core.PlayField
     public class PlayFieldMemento : IMemento
     {
         private ICell[,] playField;
+        
 
-        public PlayFieldMemento(IPlayField playField)
+        public PlayFieldMemento(ICell[,] playField, IPosition playerPosition)
         {
-            this.PlayField = playField.PlayFieldMatrix;
-            this.PlayerPosition = new Position(playField.PlayerPosition.Row, playField.PlayerPosition.Column);
+            this.playField = new ICell[playField.GetLength(0),playField.GetLength(1)];
+            this.PlayField = playField;
+            this.PlayerPosition = playerPosition;
+
         }
 
         public ICell[,] PlayField
         {
-            get
-            {
-                return this.playField;
-            }
+            get { return this.playField; }
             set
             {
-                if (value == null)
+                for (int i = 0; i < value.GetLength(0); i++)
                 {
-                    //  throw  new NullReferenceException();
-                }
-                else
-                {
-                    if (this.playField == null)
+                    for (int j = 0; j < value.GetLength(1); j++)
                     {
-                        this.playField = new ICell[value.GetLength(0), value.GetLength(1)];
-                    }
-
-                    for (int i = 0; i < value.GetLength(0); i++)
-                    {
-                        for (int j = 0; j < value.GetLength(1); j++)
+                        if (value[i, j] != null)
                         {
-                            this.playField[i, j] = (ICell)(((ICloneable)value[i, j]).Clone());
+                            this.playField[i, j] = value[i, j].Clone();
                         }
                     }
                 }

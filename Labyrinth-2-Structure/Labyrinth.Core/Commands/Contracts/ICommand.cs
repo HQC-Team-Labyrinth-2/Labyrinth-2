@@ -2,7 +2,7 @@
 {
     public interface ICommand
     {
-        int Execute(ICommandContext commandContext);
+        void Execute(ICommandContext commandContext);
         string GetName();
     }
 }

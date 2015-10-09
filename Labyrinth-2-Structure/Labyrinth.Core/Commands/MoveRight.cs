@@ -1,24 +1,17 @@
 ﻿namespace Labyrinth.Core.Commands
 {
     using Labyrinth.Core.Commands.Contracts;
-    using Labyrinth.Core.PlayField.Contracts;
     using Labyrinth.Core.Common;
 
-    public class MoveRight : ICommand
+    public class MoveRight : MoveCommand,ICommand
     {
-        public int Execute(ICommandContext context)
+        public MoveRight():base(Direction.Right)
         {
-            context.Memory.Memento.Add(context.PlayField.SaveMemento());
-
-            context.PlayField.TryMove(context.PlayField.GetCell(context.PlayField.PlayerPosition), Direction.Right);
-
-            return 1;
         }
 
-        public string GetName()
+        public override string GetName()
         {
             return "Move Right";
-
         }
     }
 }

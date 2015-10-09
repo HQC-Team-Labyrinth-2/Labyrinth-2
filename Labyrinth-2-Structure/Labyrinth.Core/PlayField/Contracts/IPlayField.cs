@@ -1,12 +1,15 @@
 ﻿//TODO: SOme of this methods shuld be moved in PlayFieldGenerator interface!
+
+using Labyrinth.Core.Player.Contracts;
+
 namespace Labyrinth.Core.PlayField.Contracts
 {
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.Common;
 
-    public interface IPlayField : IMemorizable
+    public interface IPlayField:IMemorizable
     {
-        ICell[,] PlayFieldMatrix { get; }
+        //ICell[,] PlayFieldMatrix { get; }
 
         int NumberOfRows { get; }
 
@@ -16,8 +19,12 @@ namespace Labyrinth.Core.PlayField.Contracts
 
         ICell GetCell(IPosition position);
 
-        void Initialize(IRandomGenerator generator);
+        void InitializePlayFieldCells(IRandomGenerator generator);
 
-        bool TryMove(ICell cell, Direction direction);
+        void RemovePlayer(IPlayer player);
+
+        void AddPlayer(IPlayer player,IPosition position);
+
+        //bool TryMove(ICell cell, Direction direction);
     }
 }

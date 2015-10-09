@@ -1,22 +1,17 @@
 ﻿namespace Labyrinth.Core.Commands
 {
-    using System;
     using Labyrinth.Core.Commands.Contracts;
-    using Labyrinth.Core.PlayField.Contracts;
     using Labyrinth.Core.Common;
 
-    public class MoveDown: ICommand
+    public class MoveDown : MoveCommand, ICommand
     {
-        public int Execute(ICommandContext context)
+        public MoveDown()
+            : base(Direction.Down)
         {
-            context.Memory.Memento.Add(context.PlayField.SaveMemento());
-
-            context.PlayField.TryMove(context.PlayField.GetCell(context.PlayField.PlayerPosition), Direction.Down);
-
-            return 1;
         }
 
-        public string GetName()
+
+        public override string GetName()
         {
             return "Move Down";
         }

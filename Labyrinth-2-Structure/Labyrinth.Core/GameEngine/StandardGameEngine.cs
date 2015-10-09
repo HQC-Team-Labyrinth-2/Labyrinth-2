@@ -1,13 +1,16 @@
 ﻿namespace Labyrinth.Core.GameEngine
 {
-    using System;
+    using System.Collections.Generic;
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.CommandFactory.Contracts;
+    using Labyrinth.Core.Commands;
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
     using Labyrinth.Core.Common.Logger;
     using Labyrinth.Core.Input.Contracts;
     using Labyrinth.Core.Output.Contracts;
+    using Labyrinth.Core.Player.Contracts;
+    using Labyrinth.Core.PlayField;
     using Labyrinth.Core.PlayField.Contracts;
     using Labyrinth.Core.Score;
     using Labyrinth.Core.Score.Contracts;
@@ -20,30 +23,30 @@
         private ICommandFactory commandFactory;
         private ICommandContext commandContext;
         private ILogger logger;
-        private int movesCount;
+        private MementoCaretaker memory;
+        private ICommandContext context;
+        private IPlayer player;
 
         public StandardGameEngine(
             IRenderer renderer,
             IInputProvider inputProvider,
             IPlayField playField,
             ICommandFactory commandFactory,
-            ICommandContext commandContext,
-            ILogger logger)
+           ILogger logger, IPlayer player)
             : base(playField)
         {
             this.renderer = renderer;
             this.input = inputProvider;
             this.ladder = Ladder.Instance;
             this.commandFactory = commandFactory;
-            this.commandContext = commandContext;
-            this.commandContext.PlayField = this.PlayField;
             this.logger = logger;
+            this.player = player;
+            this.memory=new MementoCaretaker(new List<IMemento>());
         }
 
         public override void Initialize(IRandomGenerator randomGenerator)
         {
-            this.PlayField.Initialize(randomGenerator);
-            this.movesCount = 0;
+            this.PlayField.InitializePlayFieldCells(randomGenerator);
         }
 
         public override void Start()
@@ -51,33 +54,29 @@
             string inputCommand = string.Empty;
             this.logger.Log("Start game");
 
-            while (!this.IsGameOver(this.PlayField) && inputCommand != "restart")
+            while (!this.IsGameOver(this.PlayField, this.player))
             {
                 this.renderer.PrintPlayField(this.PlayField);
                 inputCommand = this.input.GetInput(this.renderer);
                 this.ProccessInput(inputCommand);
             }
 
-            if (inputCommand != "restart")
-            {
-                string congratulationMsg = string.Format(GlobalMessages.CongratulationMessage, this.movesCount);
+                string congratulationMsg = string.Format(GlobalMessages.CongratulationMessage, this.player.MovesCount);
                 this.renderer.PrintMessage(congratulationMsg);
 
-                if (this.ladder.ResultQualifiesInLadder(this.movesCount))
+                if (this.ladder.ResultQualifiesInLadder(this.player.MovesCount))
                 {
                     this.renderer.PrintMessage(GlobalMessages.EnterNameForScoreBoardMessage);
                     string name = this.input.GetPlayerName();
-                    this.ladder.AddResultInLadder(this.movesCount, name);
+                    this.ladder.AddResultInLadder(this.player.MovesCount, name);
                 }
-            }
         }
 
-        //TODO: validation for wall hit missing. The  game  should over when player hit the wall.
-        private bool IsGameOver(IPlayField playField)
+        private bool IsGameOver(IPlayField playField, IPlayer player)
         {
             bool isGameOver = false;
-            int currentRow = playField.PlayerPosition.Row;
-            int currentCol = playField.PlayerPosition.Column;
+            int currentRow = player.CurentCell.Position.Row;
+            int currentCol = player.CurentCell.Position.Column;
             if (currentRow == 0 ||
                 currentCol == 0 ||
                 currentRow == Constants.StandardGameLabyrinthRows - 1 ||
@@ -92,14 +91,14 @@
 
         private void ProccessInput(string input)
         {
+            this.commandContext=new CommandContext(this.PlayField,this.renderer,this.memory,this.ladder,this.player);
             string inputToLower = input.ToLower();
 
             ICommand command = this.commandFactory.CreateCommand(inputToLower);
 
-            int move = command.Execute(this.commandContext);
+            command.Execute(this.commandContext);
 
             this.logger.Log("Executed command - " + command.GetName());
-            this.movesCount += move;
         }
     }
 }

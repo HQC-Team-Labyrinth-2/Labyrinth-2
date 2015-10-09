@@ -1,10 +1,12 @@
-﻿namespace Labyrinth.Core.PlayField
+﻿using System;
+
+namespace Labyrinth.Core.PlayField
 {
-    using System;
+
     using Labyrinth.Core.Common;
     using Labyrinth.Core.PlayField.Contracts;
 
-    public class Cell : ICell, ICloneable
+    public class Cell : ICell, ICloneableCell
     {
         public Cell(IPosition position, char value = Constants.StandardGameCellEmptyValue)
         {
@@ -12,7 +14,7 @@
             this.ValueChar = value;
         }
 
-        public IPosition Position { get; private set; }
+        public IPosition Position { get;  set; }
 
         public char ValueChar { get; set; }
 
@@ -26,10 +28,10 @@
             return false;
         }
 
-        public object Clone()
+        public ICell Clone()
         {
             Cell newCell = (Cell)this.MemberwiseClone();
-            newCell.Position = (Position)((ICloneable)newCell.Position).Clone();
+            newCell.Position = newCell.Position.Clone();
             return newCell;
         }
     }

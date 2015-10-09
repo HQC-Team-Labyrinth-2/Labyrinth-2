@@ -6,11 +6,10 @@
 
     public class ExitCommand:ICommand
     {
-        public int Execute(ICommandContext commandContext)
+        public void Execute(ICommandContext commandContext)
         {
             commandContext.Output.PrintMessage(GlobalMessages.GoodbyeMessage);
             Environment.Exit(0);
-            return 0;
         }
 
         public string GetName()

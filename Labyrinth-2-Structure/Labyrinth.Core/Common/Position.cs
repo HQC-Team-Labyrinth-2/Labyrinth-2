@@ -1,8 +1,8 @@
 ﻿namespace Labyrinth.Core.Common
 {
-    using System;
+    using Labyrinth.Core.Commands.Contracts;
 
-    public class Position : IPosition, ICloneable
+    public class Position : IPosition, ICloneablePosition
     {
         public Position(int row = Constants.StandardGameLabyrinthRows / 2, int col = Constants.StandardGameLabyrinthCols / 2)
         {
@@ -14,7 +14,7 @@
 
         public int Row { get; set; }
 
-        public object Clone()
+        public IPosition Clone()
         {
             return (Position)this.MemberwiseClone();
         }
