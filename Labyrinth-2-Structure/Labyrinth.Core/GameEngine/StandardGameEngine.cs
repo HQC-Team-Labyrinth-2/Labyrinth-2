@@ -1,4 +1,7 @@
-﻿namespace Labyrinth.Core.GameEngine
+﻿using System;
+using Labyrinth.Core.Helpers;
+
+namespace Labyrinth.Core.GameEngine
 {
     using System.Collections.Generic;
     using Labyrinth.Common.Contracts;
@@ -41,7 +44,7 @@
             this.commandFactory = commandFactory;
             this.logger = logger;
             this.player = player;
-            this.memory=new MementoCaretaker(new List<IMemento>());
+            this.memory = new MementoCaretaker(new List<IMemento>());
         }
 
         public override void Initialize(IRandomGenerator randomGenerator)
@@ -53,30 +56,65 @@
         {
             string inputCommand = string.Empty;
             this.logger.Log("Start game");
+            this.renderer.PrintMessage(GlobalMessages.WellcomeMessage);
 
-            while (!this.IsGameOver(this.PlayField, this.player))
+            while (true)
             {
                 this.renderer.PrintPlayField(this.PlayField);
                 inputCommand = this.input.GetInput(this.renderer);
-                this.ProccessInput(inputCommand);
-            }
-
-                string congratulationMsg = string.Format(GlobalMessages.CongratulationMessage, this.player.MovesCount);
-                this.renderer.PrintMessage(congratulationMsg);
-
-                if (this.ladder.ResultQualifiesInLadder(this.player.MovesCount))
+                try
                 {
-                    this.renderer.PrintMessage(GlobalMessages.EnterNameForScoreBoardMessage);
-                    string name = this.input.GetPlayerName();
-                    this.ladder.AddResultInLadder(this.player.MovesCount, name);
+                    this.ProccessInput(inputCommand);
                 }
+                catch (InvalidPlayerPositionException e)
+                {
+                    this.renderer.PrintMessage(e.Message);
+                    if (this.PlayerWantNewGame())
+                    {
+                        this.ProccessInput("restart");
+                    }
+                    else
+                    {
+                       this.ProccessInput("exit");
+                    }
+
+                }
+                catch (InvalidCommandException e)
+                {
+                    this.renderer.PrintMessage(e.Message);
+                }
+
+                if (PlayerWin())
+                {
+                    string congratulationMsg = string.Format(GlobalMessages.CongratulationMessage, this.player.MovesCount);
+                    this.renderer.PrintMessage(congratulationMsg);
+
+                    if (this.ladder.ResultQualifiesInLadder(this.player.MovesCount))
+                    {
+                        this.renderer.PrintMessage(GlobalMessages.EnterNameForScoreBoardMessage);
+                        string name = this.input.GetPlayerName();
+                        this.ladder.AddResultInLadder(this.player.MovesCount, name);
+                    }
+
+                    if (this.PlayerWantNewGame())
+                    {
+                        this.ProccessInput("restart");
+                    }
+                    else
+                    {
+                       this.ProccessInput("exit");
+                    }
+                }
+
+
+            }
         }
 
-        private bool IsGameOver(IPlayField playField, IPlayer player)
+        private bool PlayerWin()
         {
             bool isGameOver = false;
-            int currentRow = player.CurentCell.Position.Row;
-            int currentCol = player.CurentCell.Position.Column;
+            int currentRow = this.player.CurentCell.Position.Row;
+            int currentCol = this.player.CurentCell.Position.Column;
             if (currentRow == 0 ||
                 currentCol == 0 ||
                 currentRow == Constants.StandardGameLabyrinthRows - 1 ||
@@ -91,7 +129,7 @@
 
         private void ProccessInput(string input)
         {
-            this.commandContext=new CommandContext(this.PlayField,this.renderer,this.memory,this.ladder,this.player);
+            this.commandContext = new CommandContext(this.PlayField, this.renderer, this.memory, this.ladder, this.player);
             string inputToLower = input.ToLower();
 
             ICommand command = this.commandFactory.CreateCommand(inputToLower);
@@ -99,6 +137,17 @@
             command.Execute(this.commandContext);
 
             this.logger.Log("Executed command - " + command.GetName());
+        }
+
+        private bool PlayerWantNewGame()
+        {
+            this.renderer.PrintMessage("Do you want to restart the game?y/n ");
+            string inputCommand = this.input.GetCommand().ToLower();
+            if (string.Equals(inputCommand, "y"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     public class GlobalErrorMessages
     {
-        public const string InvalidMoveMessage = "Invalid move!";
+        public const string InvalidMoveMessage = "Invalid move!You lost";
         public const string InvalidCommandMessage = "Invalid command!";
         public const string ScoreBoardEmptyMessage = "The scoreboard is empty.";
 

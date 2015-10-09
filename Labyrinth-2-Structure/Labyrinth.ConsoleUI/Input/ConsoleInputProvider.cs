@@ -18,5 +18,10 @@
         {
             return Console.ReadLine();
         }
+
+        public string GetCommand()
+        {
+           return Console.ReadLine();
+        }
     }
 }

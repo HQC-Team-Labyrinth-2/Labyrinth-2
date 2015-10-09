@@ -7,5 +7,7 @@
         string GetInput(IRenderer outputRenderer);
 
         string GetPlayerName();
+
+        string GetCommand();
     }
 }

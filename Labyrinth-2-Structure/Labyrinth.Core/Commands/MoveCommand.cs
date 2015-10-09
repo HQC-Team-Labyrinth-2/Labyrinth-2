@@ -16,7 +16,7 @@ namespace Labyrinth.Core.Commands
             commandContext.Memory.Memento.Add(commandContext.PlayField.SaveMemento());
 
             IPosition newPosition = this.FindNewCellPosition(this.Direction, commandContext.Player);
-            Validator.CheckIfNewPositionIsValid(newPosition, commandContext.PlayField);
+           // Validator.CheckIfPlayerMovedOnEmptyPosition(newPosition, commandContext.PlayField);
 
             commandContext.PlayField.RemovePlayer(commandContext.Player);
             commandContext.PlayField.AddPlayer(commandContext.Player, newPosition);

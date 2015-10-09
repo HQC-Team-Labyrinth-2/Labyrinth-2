@@ -68,7 +68,8 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Contracts\IRandomGenerator.cs" />
     <Compile Include="Common\Direction.cs" />
-    <Compile Include="Helpers\GameLostException.cs" />
+    <Compile Include="Helpers\InvalidCommandException.cs" />
+    <Compile Include="Helpers\InvalidPlayerPositionException.cs" />
     <Compile Include="Common\GlobalErrorMessages.cs" />
     <Compile Include="Common\GlobalMessages.cs" />
     <Compile Include="Common\IPosition.cs" />

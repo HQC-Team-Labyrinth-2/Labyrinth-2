@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Labyrinth.Core.Helpers;
 using Labyrinth.Core.Player.Contracts;
 
 namespace Labyrinth.Core.PlayField
@@ -58,6 +59,11 @@ namespace Labyrinth.Core.PlayField
 
         public void AddPlayer(IPlayer player, IPosition position)
         {
+            if (!this.playField[position.Row, position.Column].IsEmpty())
+            {
+                throw new InvalidPlayerPositionException(GlobalErrorMessages.InvalidMoveMessage);
+            }
+
             player.CurentCell = this.playField[position.Row, position.Column];
             this.playField[position.Row, position.Column].ValueChar = Constants.StandardGamePlayerChar;
             this.PlayerPosition = position;

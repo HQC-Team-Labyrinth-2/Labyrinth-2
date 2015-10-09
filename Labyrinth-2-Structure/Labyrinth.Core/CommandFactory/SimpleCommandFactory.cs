@@ -2,9 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
-    using Labyrinth.Core.Commands;
-    using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.CommandFactory.Contracts;
+    using Labyrinth.Core.Commands.Contracts;
+    using Labyrinth.Core.Commands;
+    using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers;
+
 
     public class SimpleCommandFactory : ICommandFactory
     {
@@ -51,7 +54,7 @@
                     resultCommand = new UndoCommand();
                     break;
                 default:
-                    throw new ArgumentException("Incorect command " + command);
+                    throw new InvalidCommandException(GlobalErrorMessages.InvalidCommandMessage);
             }
 
             this.commandDictionary.Add(command, resultCommand);
