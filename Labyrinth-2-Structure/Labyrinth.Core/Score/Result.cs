@@ -12,6 +12,14 @@ namespace Labyrinth.Core.Score
 
         public Result(int movesCount, string playerName)
         {
+            if (string.IsNullOrEmpty(playerName))
+            {
+                throw new ArgumentException("PlayerName must be entered");
+            }
+            if(movesCount < 0)
+            {
+                throw new ArgumentException("MovesCount must be positive number or 0");
+            }
             this.movesCount = movesCount;
             this.playerName = playerName;
         }

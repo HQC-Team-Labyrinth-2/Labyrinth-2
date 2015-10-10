@@ -55,6 +55,7 @@
     <Compile Include="CommandFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CellTests.cs" />
+    <Compile Include="ResultTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Labyrinth.ConsoleUI\Labyrinth.ConsoleUI.csproj">
