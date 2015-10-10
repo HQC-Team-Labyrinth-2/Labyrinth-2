@@ -3,7 +3,7 @@
     using Labyrinth.Core.Common.Contracts;
     using Labyrinth.Core.Output.Contracts;
 
-    public interface ILadder : IScoreLadderProvider
+    public interface IScoreLadder : IScoreLadderContentProvider
     {
         IRenderer OutputRenderer { set; }
 

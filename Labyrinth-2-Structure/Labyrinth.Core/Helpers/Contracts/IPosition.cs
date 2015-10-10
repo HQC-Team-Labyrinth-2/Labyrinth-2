@@ -1,7 +1,5 @@
-﻿namespace Labyrinth.Core.Common
+﻿namespace Labyrinth.Core.Helpers.Contracts
 {
-    using Labyrinth.Core.Commands.Contracts;
-
     public interface IPosition : ICloneablePosition
     {
         int Row { get; set; }

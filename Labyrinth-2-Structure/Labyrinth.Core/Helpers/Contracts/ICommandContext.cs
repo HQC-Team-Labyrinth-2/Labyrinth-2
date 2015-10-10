@@ -1,4 +1,4 @@
-﻿namespace Labyrinth.Core.Commands.Contracts
+﻿namespace Labyrinth.Core.Helpers.Contracts
 {
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Player.Contracts;
@@ -13,7 +13,7 @@
 
         IMementoCaretaker Memory { get; }
 
-        ILadder Ladder { get; }
+        IScoreLadder Ladder { get; }
 
         IPlayer Player { get; }
     }

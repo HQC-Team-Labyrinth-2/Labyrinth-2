@@ -1,9 +1,11 @@
-﻿namespace Labyrinth.Core.Score
+﻿using Labyrinth.Core.Score.Contracts;
+
+namespace Labyrinth.Core.Score
 {
     using System;
 
     //TODO:Implement a resultComparator class that implament function for compare two results
-    public class Result : IComparable<Result>
+    public class Result : IComparable<Result>, IResult
     {
         private int movesCount;
         private string playerName;

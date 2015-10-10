@@ -1,5 +1,6 @@
 ﻿namespace Labyrinth.Core.Player.Contracts
 {
+    using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
     public interface IPlayer
@@ -9,5 +10,7 @@
         string Name { get; set; }
 
         ICell CurentCell { get; set; }
+
+        IPosition StartPosition { get; }
     }
 }

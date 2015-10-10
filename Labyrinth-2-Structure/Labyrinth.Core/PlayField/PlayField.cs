@@ -2,7 +2,8 @@
 {
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.Common;
-    using Labyrinth.Core.Helpers;
+    using Labyrinth.Core.Helpers.Contracts;
+    using Labyrinth.Core.Helpers.CustomExceptions;
     using Labyrinth.Core.Player.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 

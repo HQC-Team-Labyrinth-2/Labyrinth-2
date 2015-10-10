@@ -1,6 +1,6 @@
 ﻿namespace Labyrinth.Core.PlayField.Contracts
 {
-    using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers.Contracts;
 
     public interface ICell : ICloneableCell
     {

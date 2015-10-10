@@ -1,4 +1,4 @@
-﻿namespace Labyrinth.Core.Helpers
+﻿namespace Labyrinth.Core.Helpers.CustomExceptions
 {
     using System;
 

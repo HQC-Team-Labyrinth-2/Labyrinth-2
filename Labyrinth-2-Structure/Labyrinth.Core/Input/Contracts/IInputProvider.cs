@@ -8,6 +8,6 @@
 
         string GetPlayerName();
 
-        string GetPlayFieldDimensions();
+        int GetPlayFieldDimensions();
     }
 }

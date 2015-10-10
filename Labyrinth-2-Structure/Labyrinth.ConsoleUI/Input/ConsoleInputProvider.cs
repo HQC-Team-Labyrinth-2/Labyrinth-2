@@ -24,9 +24,9 @@
             return this.menuInput.GetPlayerName();
         }
 
-        public string GetPlayFieldDimensions()
+        public int GetPlayFieldDimensions()
         {
-            return this.GetPlayFieldDimensions();
+            return this.menuInput.GetPlayFieldDimensions();
         }
     }
 }

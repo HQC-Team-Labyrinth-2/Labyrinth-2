@@ -9,21 +9,21 @@
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Score.Contracts;
 
-    public class Ladder : ILadder, IScoreLadderProvider
+    public class ScoreLadder : IScoreLadder, IScoreLadderContentProvider
     {
         private static object syncRoot = new object();
-        private static Ladder instance;
+        private static ScoreLadder instance;
         private int capacity;
         private List<Result> topResults;
         private IRenderer outputRenderer;
 
-        private Ladder()
+        private ScoreLadder()
         {
             this.topResults = new List<Result>();
             this.Capacity = Constants.StandardGameTopResultCapacity;
         }
 
-        public static Ladder Instance
+        public static ScoreLadder Instance
         {
             get
             {
@@ -33,7 +33,7 @@
                     {
                         if (instance == null)
                         {
-                            instance = new Ladder();
+                            instance = new ScoreLadder();
                         }
                     }
                 }
@@ -70,7 +70,7 @@
             set
             {
                 if (value < 1)
-                {
+                {//TODO:Capacity of ladder cant be  negative custom exception
                     throw new ArgumentOutOfRangeException("Capacity can't be negativ!");
                 }
 
@@ -93,7 +93,7 @@
             return false;
         }
 
-        public void AddResultInLadder(int movesCount, string playerName)
+        public void AddResultInLadder( int movesCount, string playerName)
         {
             Result result = new Result(movesCount, playerName);
             if (this.topResults.Count == this.Capacity)

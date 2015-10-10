@@ -1,12 +1,12 @@
 ﻿namespace Labyrinth.Core.CommandFactory
 {
-    using System;
     using System.Collections.Generic;
     using Labyrinth.Core.CommandFactory.Contracts;
     using Labyrinth.Core.Commands;
     using Labyrinth.Core.Commands.Contracts;
+    using Labyrinth.Core.Commands.MoveCommands;
     using Labyrinth.Core.Common;
-    using Labyrinth.Core.Helpers;
+    using Labyrinth.Core.Helpers.CustomExceptions;
 
     public class SimpleCommandFactory : ICommandFactory
     {

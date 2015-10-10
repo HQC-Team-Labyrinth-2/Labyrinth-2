@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using Labyrinth.Core.Commands.Contracts;
+    using Labyrinth.Core.Helpers.Contracts;
 
     public class UndoCommand : ICommand
     {

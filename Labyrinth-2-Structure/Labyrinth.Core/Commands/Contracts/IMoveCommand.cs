@@ -2,7 +2,7 @@
 {
     using Labyrinth.Core.Common;
 
-    public interface IPlayerCommand
+    public interface IMoveCommand
     {
         Direction Direction { get; set; }
     }

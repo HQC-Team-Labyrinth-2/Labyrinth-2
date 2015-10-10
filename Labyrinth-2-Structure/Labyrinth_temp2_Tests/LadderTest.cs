@@ -8,12 +8,12 @@ namespace Labyrinth_temp2_Tests
     [TestClass]
     public class LadderTest
     {
-        private Ladder ladder;
+        private ScoreLadder ladder;
 
         [TestInitialize]
         public void Initialize()
         {
-            ladder = Ladder.Instance;
+            ladder = ScoreLadder.Instance;
         }
 
         [TestMethod]

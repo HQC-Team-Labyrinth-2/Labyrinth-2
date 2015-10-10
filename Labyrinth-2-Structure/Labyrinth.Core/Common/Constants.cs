@@ -10,8 +10,6 @@
         public const int StandardGameLabyrinthRows = 9;
         public const int StandardGameLabyrinthCols = 9;
 
-        public const int StandardGameNumberOfPlayers = 1;
-
         public const int StandardGameTopResultCapacity = 5;
     }
 }

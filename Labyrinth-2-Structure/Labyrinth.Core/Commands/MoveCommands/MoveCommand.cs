@@ -1,10 +1,12 @@
-﻿namespace Labyrinth.Core.Commands
+﻿namespace Labyrinth.Core.Commands.MoveCommands
 {
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers;
+    using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.Player.Contracts;
 
-    public abstract class MoveCommand : ICommand, IPlayerCommand
+    public abstract class MoveCommand : ICommand, IMoveCommand
     {
         public MoveCommand(Direction direction)
         {

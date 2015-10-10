@@ -2,6 +2,7 @@
 {
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.Player.Contracts;
 
     public interface IPlayField : IMemorizable

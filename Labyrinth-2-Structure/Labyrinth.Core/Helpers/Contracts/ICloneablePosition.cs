@@ -1,4 +1,4 @@
-﻿namespace Labyrinth.Core.Commands.Contracts
+﻿namespace Labyrinth.Core.Helpers.Contracts
 {
     using Labyrinth.Core.Common;
 

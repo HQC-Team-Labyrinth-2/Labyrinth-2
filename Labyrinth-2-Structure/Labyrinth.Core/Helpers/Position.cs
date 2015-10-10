@@ -1,10 +1,11 @@
-﻿namespace Labyrinth.Core.Common
+﻿namespace Labyrinth.Core.Helpers
 {
-    using Labyrinth.Core.Commands.Contracts;
+    using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers.Contracts;
 
     public class Position : IPosition, ICloneablePosition
     {
-        public Position(int row = Constants.StandardGameLabyrinthRows / 2, int col = Constants.StandardGameLabyrinthCols / 2)
+        public Position(int row, int col)
         {
             this.Row = row;
             this.Column = col;

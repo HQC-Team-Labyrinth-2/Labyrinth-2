@@ -6,7 +6,7 @@
 
     public class TopScoresPanel : ILadderRenderer
     {
-        public void ShowTopScores(IScoreLadderProvider score)
+        public void ShowTopScores(IScoreLadderContentProvider score)
         {
             Console.WriteLine(score.ProvideContent());
         }

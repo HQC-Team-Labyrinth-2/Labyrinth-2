@@ -4,6 +4,6 @@
 
     public interface ILadderRenderer
     {
-        void ShowTopScores(IScoreLadderProvider score);
+        void ShowTopScores(IScoreLadderContentProvider score);
     }
 }

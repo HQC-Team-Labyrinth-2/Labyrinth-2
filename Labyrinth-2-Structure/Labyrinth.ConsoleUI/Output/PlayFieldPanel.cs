@@ -1,7 +1,7 @@
 ﻿namespace Labyrinth.ConsoleUI.Output
 {
     using System;
-    using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers;
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 

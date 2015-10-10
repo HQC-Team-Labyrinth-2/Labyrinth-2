@@ -22,7 +22,7 @@
             this.infoPanel.ShowInfo(message);
         }
 
-        public void ShowScoreLadder(IScoreLadderProvider scoreProvider)
+        public void ShowScoreLadder(IScoreLadderContentProvider scoreProvider)
         {
             this.topScorePanel.ShowTopScores(scoreProvider);
         }

@@ -8,12 +8,12 @@
         public const string GoodbyeMessage = "Good Bye";
 
         public const string GetInputMessage = "Enter your move (L=left," +
-            "R-right, U=up, D=down): ";
+            "R-right , U=up, D=down, U=undo): ";
 
         public const string WellcomeMessage = "Welcome to “Labirinth” game." +
             " Please try to escape." +
-            " Use 'top' to view the top scoreboard," +
-            " 'restart' to start a new game and 'exit' to quit the game.";
+            " Use 't' to view the top scoreboard," +
+            " 'r' to start a new game and 'e' to quit the game.";
 
         public const string CongratulationMessage = "Congratulations! You escaped in {0} moves.";
     }

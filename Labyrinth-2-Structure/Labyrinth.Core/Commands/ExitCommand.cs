@@ -3,6 +3,7 @@
     using System;
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers.Contracts;
 
     public class ExitCommand : ICommand
     {

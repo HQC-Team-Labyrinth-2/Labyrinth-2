@@ -7,7 +7,7 @@
     {
         void ShowInfoMessage(string message);
 
-        void ShowScoreLadder(IScoreLadderProvider scoreProvider);
+        void ShowScoreLadder(IScoreLadderContentProvider scoreProvider);
 
         void ShowPlayField(IPlayField playField);
 

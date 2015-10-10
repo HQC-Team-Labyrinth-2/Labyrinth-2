@@ -1,13 +1,16 @@
-﻿namespace Labyrinth.Core.GameEngine
+﻿using Labyrinth.Core.GameEngine.Contracts;
+
+namespace Labyrinth.Core.GameEngine
 {
     using System.Collections.Generic;
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.CommandFactory.Contracts;
-    using Labyrinth.Core.Commands;
-    using Labyrinth.Core.Commands.Contracts;  
+    using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
     using Labyrinth.Core.Common.Logger;
     using Labyrinth.Core.Helpers;
+    using Labyrinth.Core.Helpers.Contracts;
+    using Labyrinth.Core.Helpers.CustomExceptions;
     using Labyrinth.Core.Input.Contracts;
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Player.Contracts;
@@ -16,41 +19,42 @@
     using Labyrinth.Core.Score;
     using Labyrinth.Core.Score.Contracts;
 
-    public class StandardGameEngine : GameEngine
+    public class StandardGameEngine : IGameEngine
     {
         private readonly IRenderer renderer;
         private readonly IInputProvider input;
-        private readonly ILadder ladder;
+        private readonly IScoreLadder ladder;
         private ICommandFactory commandFactory;
         private ICommandContext commandContext;
         private ILogger logger;
         private MementoCaretaker memory;
         private IPlayer player;
+        private IPlayField playField;
 
         public StandardGameEngine(
             IRenderer renderer,
             IInputProvider inputProvider,
             IPlayField playField,
             ICommandFactory commandFactory,
-           ILogger logger,
+            ILogger logger,
             IPlayer player)
-            : base(playField)
         {
+            this.playField = playField;
             this.renderer = renderer;
             this.input = inputProvider;
-            this.ladder = Ladder.Instance;
+            this.ladder = ScoreLadder.Instance;
             this.commandFactory = commandFactory;
             this.logger = logger;
             this.player = player;
             this.memory = new MementoCaretaker(new List<IMemento>());
         }
 
-        public override void Initialize(IRandomGenerator randomGenerator)
+        public void Initialize(IRandomGenerator randomGenerator)
         {
-            this.PlayField.InitializePlayFieldCells(randomGenerator);
+            this.playField.InitializePlayFieldCells(randomGenerator);
         }
 
-        public override void Start()
+        public void Start()
         {
             string inputCommand = string.Empty;
             this.logger.Log("Start game");
@@ -58,7 +62,7 @@
 
             while (true)
             {
-                this.renderer.ShowPlayField(this.PlayField);
+                this.renderer.ShowPlayField(this.playField);
                 inputCommand = this.input.GetCommand();
                 try
                 {
@@ -112,8 +116,8 @@
             int currentCol = this.player.CurentCell.Position.Column;
             if (currentRow == 0 ||
                 currentCol == 0 ||
-                currentRow == Constants.StandardGameLabyrinthRows - 1 ||
-                currentCol == Constants.StandardGameLabyrinthCols - 1)
+                currentRow == this.playField.NumberOfRows - 1 ||
+                currentCol == this.playField.NumberOfCols - 1)
             {
                 isGameOver = true;
                 this.logger.Log("Game over");
@@ -124,7 +128,7 @@
 
         private void ProccessInput(string input)
         {
-            this.commandContext = new CommandContext(this.PlayField, this.renderer, this.memory, this.ladder, this.player);
+            this.commandContext = new CommandContext(this.playField, this.renderer, this.memory, this.ladder, this.player);
             string inputToLower = input.ToLower();
 
             ICommand command = this.commandFactory.CreateCommand(inputToLower);

@@ -1,6 +1,7 @@
 ﻿namespace Labyrinth.Core.PlayField
 {
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
     public class Cell : ICell, ICloneableCell

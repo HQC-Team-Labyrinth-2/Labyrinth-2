@@ -3,6 +3,8 @@
     using System.Collections.Generic;
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers;
+    using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
     public class StandardPlayFieldGenerator : IPlayFieldGenerator
@@ -14,7 +16,7 @@
 
         public StandardPlayFieldGenerator(IPosition playerPosition, int rows = Constants.StandardGameLabyrinthRows, int cols = Constants.StandardGameLabyrinthCols)
         {
-            this.playField = new Cell[rows, cols];
+            this.playField = new ICell[rows, cols];
             this.playerPosition = playerPosition;
             this.rows = rows;
             this.cols = cols;
@@ -22,8 +24,6 @@
 
         public ICell[,] GeneratePlayField(IRandomGenerator rand)
         {
-            this.playField = new Cell[this.rows, this.cols];
-
             for (int row = 0; row < this.rows; row++)
             {
                 for (int col = 0; col < this.cols; col++)

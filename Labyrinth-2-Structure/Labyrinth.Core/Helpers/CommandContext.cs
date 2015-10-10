@@ -1,6 +1,6 @@
-﻿namespace Labyrinth.Core.Commands
+﻿namespace Labyrinth.Core.Helpers
 {
-    using Labyrinth.Core.Commands.Contracts;
+    using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Player.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
@@ -8,7 +8,7 @@
 
     public class CommandContext : ICommandContext
     {
-        public CommandContext(IPlayField playField, IRenderer output, IMementoCaretaker memory, ILadder ladder, IPlayer player)
+        public CommandContext(IPlayField playField, IRenderer output, IMementoCaretaker memory, IScoreLadder ladder, IPlayer player)
         {
             this.PlayField = playField;
             this.Output = output;
@@ -23,7 +23,7 @@
 
         public IMementoCaretaker Memory { get; set; }
 
-        public ILadder Ladder { get; private set; }
+        public IScoreLadder Ladder { get; private set; }
 
         public IPlayer Player { get; private set; }
     }

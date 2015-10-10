@@ -1,4 +1,4 @@
-﻿namespace Labyrinth.Core.Commands
+﻿namespace Labyrinth.Core.Commands.MoveCommands
 {
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
