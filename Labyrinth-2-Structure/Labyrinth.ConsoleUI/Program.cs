@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Labyrinth.Core;
-using Labyrinth.Core.GameEngine;
-using Labyrinth.ConsoleUI.Output;
-using Labyrinth.ConsoleUI.Input;
-using Labyrinth.Core.Common.Logger;
-using Labyrinth.Core.Input.Contracts;
-namespace Labyrinth.ConsoleUI
+﻿namespace Labyrinth.ConsoleUI
 {
+    using Labyrinth.Core;
+    using Labyrinth.ConsoleUI.Output;
+    using Labyrinth.ConsoleUI.Input;
+    using Labyrinth.Core.Common.Logger;
+    using Labyrinth.Core.Input.Contracts;
+    using Labyrinth.Core.Output.Contracts;
+
     public class Program
     {
         static void Main(string[] args)
         {
-            LabyrinthFacade.Start(new ConsoleRender(), new ConsoleInputProvider(), FileLogger.Instance());
+            ICommandInputProvider commandInput = new CommandReader();
+            IMenuInputProvider menuInput = new Menu();
+            IInputProvider inputProvider = new ConsoleInputProvider(commandInput, menuInput);
+
+            IInfoRenderer infoPanel = new InfoPanel();
+            IPlayFieldRenderer playFieldPanel = new PlayFieldPanel();
+            ILadderRenderer topScoresPanel = new TopScoresPanel();
+            IRenderer consoleRenderer = new ConsoleRender(infoPanel, playFieldPanel, topScoresPanel);
+
+            LabyrinthFacade.Start(consoleRenderer, inputProvider, FileLogger.Instance());
         }
     }
-
-
 }

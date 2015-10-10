@@ -7,21 +7,29 @@
 
     public class ConsoleInputProvider : IInputProvider
     {
-        public string GetInput(IRenderer console)
-        {
-            console.PrintMessage(GlobalMessages.GetInputMessage);
-            string inputLine = Console.ReadLine();
-            return inputLine;
-        }
+        private readonly ICommandInputProvider CommandInput;
 
-        public string GetPlayerName()
+        private readonly IMenuInputProvider MenuInput;
+
+        public ConsoleInputProvider(ICommandInputProvider cmdInput, IMenuInputProvider menuInput)
         {
-            return Console.ReadLine();
+            this.CommandInput = cmdInput;
+            this.MenuInput = menuInput;
         }
 
         public string GetCommand()
         {
-           return Console.ReadLine();
+            return this.CommandInput.GetCommand();
+        }
+
+        public string GetPlayerName()
+        {
+            return this.MenuInput.GetPlayerName();
+        }
+
+        public string GetPlayFieldDimensions()
+        {
+            return this.GetPlayFieldDimensions();
         }
     }
 }

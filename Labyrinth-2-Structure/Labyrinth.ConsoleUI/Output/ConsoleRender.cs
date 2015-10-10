@@ -1,34 +1,40 @@
 ﻿namespace Labyrinth.ConsoleUI.Output
 {
-    using System;
-    using Labyrinth.Core.Common;
     using Labyrinth.Core.Common.Contracts;
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
     public class ConsoleRender : IRenderer
     {
-        public void PrintPlayField(IPlayField playField)
+        private IInfoRenderer infoPanel;
+        private IPlayFieldRenderer playFieldPanel;
+        private ILadderRenderer topScorePanel;
+
+        public ConsoleRender(IInfoRenderer infoPanel, IPlayFieldRenderer playFieldPanel, ILadderRenderer topScorePanel)
         {
-            for (int row = 0; row < playField.NumberOfRows; row++)
-            {
-                for (int col = 0; col < playField.NumberOfCols; col++)
-                {
-                    ICell cell = playField.GetCell(new Position(row,col));
-                    Console.Write(cell.ValueChar + " ");
-                }
-                Console.WriteLine();
-            }
+            this.infoPanel = infoPanel;
+            this.playFieldPanel = playFieldPanel;
+            this.topScorePanel = topScorePanel;
         }
 
-        public void PrintMessage(string msg)
+        public void ShowInfoMessage(string message)
         {
-            Console.WriteLine(msg);
+            this.infoPanel.ShowInfo(message);
         }
 
-        public void Show(IContentProvider provider)
+        public void ShowScoreLadder(IScoreLadderProvider scoreProvider)
         {
-           Console.WriteLine(provider.ProvideContent());
+            this.topScorePanel.ShowTopScores(scoreProvider);
+        }
+
+        public void ShowPlayField(IPlayField playField)
+        {
+            this.playFieldPanel.ShowPlayField(playField);
+        }
+
+        public void ClearPlayField()
+        {
+            this.playFieldPanel.ClearPlayField();
         }
     }
 }

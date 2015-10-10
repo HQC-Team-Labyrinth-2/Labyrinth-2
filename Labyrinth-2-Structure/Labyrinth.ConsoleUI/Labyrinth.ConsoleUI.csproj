@@ -46,8 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Input\CommandReader.cs" />
     <Compile Include="Input\ConsoleInputProvider.cs" />
+    <Compile Include="Input\Menu.cs" />
     <Compile Include="Output\ConsoleRender.cs" />
+    <Compile Include="Output\InfoPanel.cs" />
+    <Compile Include="Output\PlayFieldPanel.cs" />
+    <Compile Include="Output\TopScoresPanel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
