@@ -27,8 +27,8 @@
             set
             {
                 if(
-                    value != Constants.StandardGameCellEmptyValue ||
-                    value != Constants.StandardGameCellWallValue ||
+                    value != Constants.StandardGameCellEmptyValue &&
+                    value != Constants.StandardGameCellWallValue &&
                     value != Constants.StandardGamePlayerChar
                     )
                 {
