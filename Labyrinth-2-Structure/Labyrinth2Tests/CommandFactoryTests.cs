@@ -12,7 +12,7 @@ namespace Labyrinth2Tests
     {
 
         [TestMethod]
-        public void CreateCommandShouldReturnMoveUP()
+        public void TestCreateCommandShouldReturnMoveUP()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("u");
@@ -20,7 +20,7 @@ namespace Labyrinth2Tests
         }
 
         [TestMethod]
-        public void CreateCommandShouldReturnMoveDown()
+        public void TestCreateCommandShouldReturnMoveDown()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("d");
@@ -28,7 +28,7 @@ namespace Labyrinth2Tests
         }
 
         [TestMethod]
-        public void CreateCommandShouldReturnMoveRight()
+        public void TestCreateCommandShouldReturnMoveRight()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("r");
@@ -36,7 +36,7 @@ namespace Labyrinth2Tests
         }
 
         [TestMethod]
-        public void CreateCommandShouldReturnMoveLeft()
+        public void TestCreateCommandShouldReturnMoveLeft()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("l");
@@ -44,7 +44,7 @@ namespace Labyrinth2Tests
         }
 
         [TestMethod]
-        public void CreateCommandShouldReturnRestart()
+        public void TestCreateCommandShouldReturnRestart()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("restart");
@@ -52,7 +52,7 @@ namespace Labyrinth2Tests
         }
 
         [TestMethod]
-        public void CreateCommandShouldReturnTop()
+        public void TestCreateCommandShouldReturnTop()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("top");
@@ -60,14 +60,14 @@ namespace Labyrinth2Tests
         }
 
         [TestMethod]
-        public void CreateCommandShouldReturnExit()
+        public void TestCreateCommandShouldReturnExit()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("exit");
             Assert.AreEqual(typeof(ExitCommand), received.GetType());
         }
         [TestMethod]
-        public void CreateCommandShouldReturnUndo()
+        public void TestCreateCommandShouldReturnUndo()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("undo");
@@ -75,7 +75,7 @@ namespace Labyrinth2Tests
         }
         [TestMethod]
         [ExpectedException(typeof(InvalidCommandException))]
-        public void CreateCommandShouldReturnException()
+        public void TestCreateCommandShouldReturnException()
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("dsadsadas");
