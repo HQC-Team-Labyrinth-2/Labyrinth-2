@@ -2,11 +2,11 @@
 {
     using Labyrinth.Core.Commands.Contracts;
 
-    public class ScoreCommand:ICommand
+    public class ScoreCommand : ICommand
     {
         public void Execute(ICommandContext context)
         {
-            context.Output.Show(context.Ladder);
+            context.Output.ShowScoreLadder(context.Ladder);
         }
 
         public string GetName()

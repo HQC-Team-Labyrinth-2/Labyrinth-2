@@ -4,8 +4,7 @@
     using Labyrinth.Core.Common.Contracts;
     using Labyrinth.Core.Output.Contracts;
 
-
-    public class TopScoresPanel:ILadderRenderer
+    public class TopScoresPanel : ILadderRenderer
     {
         public void ShowTopScores(IScoreLadderProvider score)
         {

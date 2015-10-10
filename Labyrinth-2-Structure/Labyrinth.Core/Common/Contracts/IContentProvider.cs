@@ -1,6 +1,6 @@
 ﻿namespace Labyrinth.Core.Common.Contracts
 {
-    public interface IContentProvider
+    public interface IScoreLadderProvider
     {
         string ProvideContent();
     }

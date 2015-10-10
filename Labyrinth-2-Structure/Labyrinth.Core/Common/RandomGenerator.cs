@@ -6,7 +6,7 @@
     public class RandomGenerator : IRandomGenerator
     {
         private static volatile RandomGenerator instance;
-        private static object syncRoot = new Object();
+        private static object syncRoot = new object();
         private Random random;
 
         private RandomGenerator()

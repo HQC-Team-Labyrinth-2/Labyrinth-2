@@ -2,7 +2,7 @@
 {
     using Labyrinth.Core.Common;
 
-    public interface ICell:ICloneableCell
+    public interface ICell : ICloneableCell
     {
         IPosition Position { get; set; }
 

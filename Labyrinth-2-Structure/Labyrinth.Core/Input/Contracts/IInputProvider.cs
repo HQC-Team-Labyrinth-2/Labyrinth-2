@@ -4,10 +4,10 @@
 
     public interface IInputProvider
     {
-        string GetInput(IRenderer outputRenderer);
+        string GetCommand();
 
         string GetPlayerName();
 
-        string GetCommand();
+        string GetPlayFieldDimensions();
     }
 }

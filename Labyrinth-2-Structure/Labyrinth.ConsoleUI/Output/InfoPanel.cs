@@ -3,11 +3,11 @@
     using System;
     using Labyrinth.Core.Output.Contracts;
 
-    public class InfoPanel:IInfoRenderer
+    public class InfoPanel : IInfoRenderer
     {
         public void ShowInfo(string infoMesage)
         {
-           Console.WriteLine(infoMesage);
+            Console.WriteLine(infoMesage);
         }
     }
 }

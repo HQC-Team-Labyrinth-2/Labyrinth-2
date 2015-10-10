@@ -16,6 +16,7 @@
             {
                 logger = new ConsoleLogger();
             }
+
             return logger;
         }
 

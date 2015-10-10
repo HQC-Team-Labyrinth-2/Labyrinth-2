@@ -8,14 +8,14 @@
     {
         private string name;
 
-        public Player(string name,ICell cell)
+        public Player(string name, ICell cell)
         {
             this.MovesCount = 0;
             this.Name = name;
             this.CurentCell = cell;
         }
 
-        public int MovesCount { get;  set; }
+        public int MovesCount { get; set; }
 
         public string Name
         {
@@ -23,6 +23,7 @@
             {
                 return this.name;
             }
+
             set
             {
                 if (string.IsNullOrEmpty(value))
@@ -34,6 +35,6 @@
             }
         }
 
-        public ICell CurentCell { get;  set; }
-       }
+        public ICell CurentCell { get; set; }
+    }
 }

@@ -3,11 +3,10 @@
     using System;
     using System.Collections.Generic;
     using Labyrinth.Core.CommandFactory.Contracts;
-    using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Commands;
+    using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
     using Labyrinth.Core.Helpers;
-
 
     public class SimpleCommandFactory : ICommandFactory
     {

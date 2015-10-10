@@ -83,8 +83,13 @@
     <Compile Include="GameEngine\Contracts\IGameEngine.cs" />
     <Compile Include="GameEngine\GameEngine.cs" />
     <Compile Include="GameEngine\StandardGameEngine.cs" />
+    <Compile Include="Input\Contracts\ICommandInputProvider.cs" />
     <Compile Include="Input\Contracts\IInputProvider.cs" />
+    <Compile Include="Input\Contracts\IMenuInputProvider.cs" />
     <Compile Include="LabyrinthFacade.cs" />
+    <Compile Include="Output\Contracts\IInfoRenderer.cs" />
+    <Compile Include="Output\Contracts\ILadderRenderer.cs" />
+    <Compile Include="Output\Contracts\IPlayFieldRenderer.cs" />
     <Compile Include="Player\Contracts\IPlayer.cs" />
     <Compile Include="Player\Player.cs" />
     <Compile Include="PlayField\Contracts\ICloneableCell.cs" />
@@ -109,9 +114,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

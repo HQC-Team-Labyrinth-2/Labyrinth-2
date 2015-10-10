@@ -9,6 +9,5 @@
         string Name { get; set; }
 
         ICell CurentCell { get; set; }
-
     }
 }

@@ -1,23 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Reflection;
-using Labyrinth.Common.Contracts;
-using Labyrinth.Core.CommandFactory;
-using Labyrinth.Core.CommandFactory.Contracts;
-using Labyrinth.Core.Commands;
-using Labyrinth.Core.Commands.Contracts;
-using Labyrinth.Core.Common;
-using Labyrinth.Core.Player.Contracts;
-using Ninject.Planning;
-
-namespace Labyrinth.Core
+﻿namespace Labyrinth.Core
 {
+    using System.Collections.Generic;
+    using Labyrinth.Core.CommandFactory;
+    using Labyrinth.Core.Common;
     using Labyrinth.Core.Common.Logger;
     using Labyrinth.Core.GameEngine;
     using Labyrinth.Core.GameEngine.Contracts;
     using Labyrinth.Core.Input.Contracts;
     using Labyrinth.Core.Output.Contracts;
+    using Labyrinth.Core.Player.Contracts;
     using Labyrinth.Core.PlayField;
 
     public class LabyrinthFacade

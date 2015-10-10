@@ -1,15 +1,13 @@
-﻿using System;
-using Labyrinth.Core.Helpers;
-
-namespace Labyrinth.Core.GameEngine
+﻿namespace Labyrinth.Core.GameEngine
 {
     using System.Collections.Generic;
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.CommandFactory.Contracts;
     using Labyrinth.Core.Commands;
-    using Labyrinth.Core.Commands.Contracts;
+    using Labyrinth.Core.Commands.Contracts;  
     using Labyrinth.Core.Common;
     using Labyrinth.Core.Common.Logger;
+    using Labyrinth.Core.Helpers;
     using Labyrinth.Core.Input.Contracts;
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Player.Contracts;
@@ -27,7 +25,6 @@ namespace Labyrinth.Core.GameEngine
         private ICommandContext commandContext;
         private ILogger logger;
         private MementoCaretaker memory;
-        private ICommandContext context;
         private IPlayer player;
 
         public StandardGameEngine(
@@ -35,7 +32,8 @@ namespace Labyrinth.Core.GameEngine
             IInputProvider inputProvider,
             IPlayField playField,
             ICommandFactory commandFactory,
-           ILogger logger, IPlayer player)
+           ILogger logger,
+            IPlayer player)
             : base(playField)
         {
             this.renderer = renderer;
@@ -56,42 +54,41 @@ namespace Labyrinth.Core.GameEngine
         {
             string inputCommand = string.Empty;
             this.logger.Log("Start game");
-            this.renderer.PrintMessage(GlobalMessages.WellcomeMessage);
+            this.renderer.ShowInfoMessage(GlobalMessages.WellcomeMessage);
 
             while (true)
             {
-                this.renderer.PrintPlayField(this.PlayField);
-                inputCommand = this.input.GetInput(this.renderer);
+                this.renderer.ShowPlayField(this.PlayField);
+                inputCommand = this.input.GetCommand();
                 try
                 {
                     this.ProccessInput(inputCommand);
                 }
                 catch (InvalidPlayerPositionException e)
                 {
-                    this.renderer.PrintMessage(e.Message);
+                    this.renderer.ShowInfoMessage(e.Message);
                     if (this.PlayerWantNewGame())
                     {
                         this.ProccessInput("restart");
                     }
                     else
                     {
-                       this.ProccessInput("exit");
+                        this.ProccessInput("exit");
                     }
-
                 }
                 catch (InvalidCommandException e)
                 {
-                    this.renderer.PrintMessage(e.Message);
+                    this.renderer.ShowInfoMessage(e.Message);
                 }
 
-                if (PlayerWin())
+                if (this.PlayerWin())
                 {
                     string congratulationMsg = string.Format(GlobalMessages.CongratulationMessage, this.player.MovesCount);
-                    this.renderer.PrintMessage(congratulationMsg);
+                    this.renderer.ShowInfoMessage(congratulationMsg);
 
                     if (this.ladder.ResultQualifiesInLadder(this.player.MovesCount))
                     {
-                        this.renderer.PrintMessage(GlobalMessages.EnterNameForScoreBoardMessage);
+                        this.renderer.ShowInfoMessage(GlobalMessages.EnterNameForScoreBoardMessage);
                         string name = this.input.GetPlayerName();
                         this.ladder.AddResultInLadder(this.player.MovesCount, name);
                     }
@@ -102,11 +99,9 @@ namespace Labyrinth.Core.GameEngine
                     }
                     else
                     {
-                       this.ProccessInput("exit");
+                        this.ProccessInput("exit");
                     }
                 }
-
-
             }
         }
 
@@ -141,12 +136,13 @@ namespace Labyrinth.Core.GameEngine
 
         private bool PlayerWantNewGame()
         {
-            this.renderer.PrintMessage("Do you want to restart the game?y/n ");
+            this.renderer.ShowInfoMessage("Do you want to restart the game?y/n ");
             string inputCommand = this.input.GetCommand().ToLower();
             if (string.Equals(inputCommand, "y"))
             {
                 return true;
             }
+
             return false;
         }
     }

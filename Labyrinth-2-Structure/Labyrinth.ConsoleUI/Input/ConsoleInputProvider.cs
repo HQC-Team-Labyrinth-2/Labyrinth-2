@@ -1,30 +1,27 @@
 ﻿namespace Labyrinth.ConsoleUI.Input
 {
-    using System;
-    using Labyrinth.Core.Common;
     using Labyrinth.Core.Input.Contracts;
-    using Labyrinth.Core.Output.Contracts;
 
     public class ConsoleInputProvider : IInputProvider
     {
-        private readonly ICommandInputProvider CommandInput;
+        private readonly ICommandInputProvider commandInput;
 
-        private readonly IMenuInputProvider MenuInput;
+        private readonly IMenuInputProvider menuInput;
 
         public ConsoleInputProvider(ICommandInputProvider cmdInput, IMenuInputProvider menuInput)
         {
-            this.CommandInput = cmdInput;
-            this.MenuInput = menuInput;
+            this.commandInput = cmdInput;
+            this.menuInput = menuInput;
         }
 
         public string GetCommand()
         {
-            return this.CommandInput.GetCommand();
+            return this.commandInput.GetCommand();
         }
 
         public string GetPlayerName()
         {
-            return this.MenuInput.GetPlayerName();
+            return this.menuInput.GetPlayerName();
         }
 
         public string GetPlayFieldDimensions()

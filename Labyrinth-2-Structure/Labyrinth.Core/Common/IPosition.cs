@@ -2,7 +2,7 @@
 {
     using Labyrinth.Core.Commands.Contracts;
 
-    public interface IPosition:ICloneablePosition
+    public interface IPosition : ICloneablePosition
     {
         int Row { get; set; }
 

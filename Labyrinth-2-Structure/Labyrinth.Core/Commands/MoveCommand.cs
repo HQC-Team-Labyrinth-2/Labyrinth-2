@@ -1,9 +1,9 @@
-﻿using Labyrinth.Core.Commands.Contracts;
-using Labyrinth.Core.Common;
-using Labyrinth.Core.Player.Contracts;
-
-namespace Labyrinth.Core.Commands
+﻿namespace Labyrinth.Core.Commands
 {
+    using Labyrinth.Core.Commands.Contracts;
+    using Labyrinth.Core.Common;
+    using Labyrinth.Core.Player.Contracts;
+
     public abstract class MoveCommand : ICommand, IPlayerCommand
     {
         public MoveCommand(Direction direction)
@@ -11,12 +11,13 @@ namespace Labyrinth.Core.Commands
             this.Direction = direction;
         }
 
+        public Direction Direction { get; set; }
+
         public void Execute(ICommandContext commandContext)
         {
             commandContext.Memory.Memento.Add(commandContext.PlayField.SaveMemento());
 
             IPosition newPosition = this.FindNewCellPosition(this.Direction, commandContext.Player);
-           // Validator.CheckIfPlayerMovedOnEmptyPosition(newPosition, commandContext.PlayField);
 
             commandContext.PlayField.RemovePlayer(commandContext.Player);
             commandContext.PlayField.AddPlayer(commandContext.Player, newPosition);
@@ -24,9 +25,6 @@ namespace Labyrinth.Core.Commands
         }
 
         public abstract string GetName();
-
-        //TODO: Change this enum with constants
-        public Direction Direction { get; set; }
 
         private IPosition FindNewCellPosition(Direction direction, IPlayer player)
         {
@@ -37,22 +35,23 @@ namespace Labyrinth.Core.Commands
             {
                 newRow = newRow - 1;
             }
-            else if (direction == Direction.Down)
-            {
-                newRow = newRow + 1;
-            }
-            else if (direction == Direction.Left)
-            {
-                newCol = newCol - 1;
-            }
-            else if (direction == Direction.Right)
-            {
-                newCol = newCol + 1;
-            }
+            else
+                if (direction == Direction.Down)
+                {
+                    newRow = newRow + 1;
+                }
+                else
+                    if (direction == Direction.Left)
+                    {
+                        newCol = newCol - 1;
+                    }
+                    else
+                        if (direction == Direction.Right)
+                        {
+                            newCol = newCol + 1;
+                        }
 
             return new Position(newRow, newCol);
         }
-
     }
-
 }

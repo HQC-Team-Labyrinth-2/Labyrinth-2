@@ -3,6 +3,7 @@
     public interface ICommand
     {
         void Execute(ICommandContext commandContext);
+
         string GetName();
     }
 }

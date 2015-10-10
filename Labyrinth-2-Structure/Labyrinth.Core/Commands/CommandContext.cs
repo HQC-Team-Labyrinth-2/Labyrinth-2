@@ -8,7 +8,7 @@
 
     public class CommandContext : ICommandContext
     {
-        public CommandContext(IPlayField playField, IRenderer output, IMementoCaretaker memory, ILadder ladder,IPlayer player)
+        public CommandContext(IPlayField playField, IRenderer output, IMementoCaretaker memory, ILadder ladder, IPlayer player)
         {
             this.PlayField = playField;
             this.Output = output;
@@ -21,7 +21,7 @@
 
         public IRenderer Output { get; private set; }
 
-        public IMementoCaretaker Memory { get;  set; }
+        public IMementoCaretaker Memory { get; set; }
 
         public ILadder Ladder { get; private set; }
 

@@ -5,7 +5,7 @@
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
-    public class PlayFieldPanel:IPlayFieldRenderer
+    public class PlayFieldPanel : IPlayFieldRenderer
     {
         public void ShowPlayField(IPlayField playField)
         {
@@ -16,6 +16,7 @@
                     ICell cell = playField.GetCell(new Position(row, col));
                     Console.Write(cell.ValueChar + " ");
                 }
+
                 Console.WriteLine();
             }
         }

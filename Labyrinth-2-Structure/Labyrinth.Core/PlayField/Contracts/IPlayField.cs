@@ -1,16 +1,11 @@
-﻿//TODO: SOme of this methods shuld be moved in PlayFieldGenerator interface!
-
-using Labyrinth.Core.Player.Contracts;
-
-namespace Labyrinth.Core.PlayField.Contracts
+﻿namespace Labyrinth.Core.PlayField.Contracts
 {
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.Player.Contracts;
 
-    public interface IPlayField:IMemorizable
+    public interface IPlayField : IMemorizable
     {
-        //ICell[,] PlayFieldMatrix { get; }
-
         int NumberOfRows { get; }
 
         int NumberOfCols { get; }
@@ -23,8 +18,6 @@ namespace Labyrinth.Core.PlayField.Contracts
 
         void RemovePlayer(IPlayer player);
 
-        void AddPlayer(IPlayer player,IPosition position);
-
-        //bool TryMove(ICell cell, Direction direction);
+        void AddPlayer(IPlayer player, IPosition position);
     }
 }

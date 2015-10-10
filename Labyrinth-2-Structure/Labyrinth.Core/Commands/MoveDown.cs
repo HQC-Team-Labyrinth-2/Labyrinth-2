@@ -10,7 +10,6 @@
         {
         }
 
-
         public override string GetName()
         {
             return "Move Down";

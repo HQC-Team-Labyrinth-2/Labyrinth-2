@@ -1,9 +1,9 @@
 ﻿namespace Labyrinth.Core.PlayField
 {
     using System.Collections.Generic;
-    using Labyrinth.Core.PlayField.Contracts;
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.PlayField.Contracts;
 
     public class StandardPlayFieldGenerator : IPlayFieldGenerator
     {
@@ -12,7 +12,7 @@
         private int cols;
         private IPosition playerPosition;
 
-        public StandardPlayFieldGenerator( IPosition playerPosition, int rows = Constants.StandardGameLabyrinthRows, int cols = Constants.StandardGameLabyrinthCols)
+        public StandardPlayFieldGenerator(IPosition playerPosition, int rows = Constants.StandardGameLabyrinthRows, int cols = Constants.StandardGameLabyrinthCols)
         {
             this.playField = new Cell[rows, cols];
             this.playerPosition = playerPosition;
@@ -22,7 +22,7 @@
 
         public ICell[,] GeneratePlayField(IRandomGenerator rand)
         {
-            this.playField = new Cell[rows, cols];
+            this.playField = new Cell[this.rows, this.cols];
 
             for (int row = 0; row < this.rows; row++)
             {
@@ -44,12 +44,12 @@
                 }
             }
 
-            this.playField[playerPosition.Row, this.playerPosition.Column].ValueChar = Constants.StandardGamePlayerChar;
+            this.playField[this.playerPosition.Row, this.playerPosition.Column].ValueChar = Constants.StandardGamePlayerChar;
 
-            bool exitPathExists = ExitPathExists();
+            bool exitPathExists = this.ExitPathExists();
             if (!exitPathExists)
             {
-                return GeneratePlayField(rand);
+                return this.GeneratePlayField(rand);
             }
             else
             {
@@ -69,25 +69,20 @@
             {
                 ICell currentCell = cellsOrder.Dequeue();
                 visitedCells.Add(currentCell);
-                if (ExitFound(currentCell))
+
+                if (this.ExitFound(currentCell))
                 {
-
-
                     pathExists = true;
                     break;
                 }
-                //TODO: rename function
-                Premestvane(currentCell, Direction.Down, cellsOrder, visitedCells);
-                Premestvane(currentCell, Direction.Up, cellsOrder, visitedCells);
 
-
-
-                Premestvane(currentCell, Direction.Left, cellsOrder, visitedCells);
-                Premestvane(currentCell, Direction.Right, cellsOrder, visitedCells);
+                this.Move(currentCell, Direction.Down, cellsOrder, visitedCells);
+                this.Move(currentCell, Direction.Up, cellsOrder, visitedCells);
+                this.Move(currentCell, Direction.Left, cellsOrder, visitedCells);
+                this.Move(currentCell, Direction.Right, cellsOrder, visitedCells);
             }
 
             return pathExists;
-
         }
 
         private bool ExitFound(ICell cell)
@@ -104,8 +99,7 @@
             return exitFound;
         }
 
-        //TODO: rename the method
-        private void Premestvane(
+        private void Move(
            ICell cell,
            Direction direction,
            Queue<ICell> cellsOrder,
@@ -113,27 +107,25 @@
         {
             int newRow;
             int newCol;
-            FindNewCellCoordinates(
+            this.FindNewCellCoordinates(
                 cell.Position.Row,
                 cell.Position.Column,
                 direction,
                 out newRow,
                 out newCol);
 
-            if (newRow < 0 || newCol < 0 ||
-                newRow >= playField.GetLength(0) || newCol >= playField.GetLength(1))
+            if (newRow < 0 ||
+                newCol < 0 ||
+                newRow >= this.playField.GetLength(0) ||
+                newCol >= this.playField.GetLength(1) ||
+                visitedCells.Contains(this.playField[newRow, newCol]))
             {
                 return;
             }
 
-            if (visitedCells.Contains(playField[newRow, newCol]))
+            if (this.playField[newRow, newCol].IsEmpty())
             {
-                return;
-            }
-
-            if (playField[newRow, newCol].IsEmpty())
-            {
-                cellsOrder.Enqueue(playField[newRow, newCol]);
+                cellsOrder.Enqueue(this.playField[newRow, newCol]);
             }
         }
 
@@ -142,8 +134,7 @@
         int col,
         Direction direction,
         out int newRow,
-        out int newCol
-        )
+        out int newCol)
         {
             newRow = row;
             newCol = col;
@@ -165,7 +156,5 @@
                 newCol = newCol + 1;
             }
         }
-
-
     }
 }

@@ -1,15 +1,15 @@
 ﻿namespace Labyrinth.ConsoleUI
 {
-    using Labyrinth.Core;
-    using Labyrinth.ConsoleUI.Output;
     using Labyrinth.ConsoleUI.Input;
+    using Labyrinth.ConsoleUI.Output;
+    using Labyrinth.Core;
     using Labyrinth.Core.Common.Logger;
     using Labyrinth.Core.Input.Contracts;
     using Labyrinth.Core.Output.Contracts;
-
+    
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             ICommandInputProvider commandInput = new CommandReader();
             IMenuInputProvider menuInput = new Menu();

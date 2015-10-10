@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Labyrinth.Core.Helpers;
-using Labyrinth.Core.Player.Contracts;
-
-namespace Labyrinth.Core.PlayField
+﻿namespace Labyrinth.Core.PlayField
 {
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.Common;
+    using Labyrinth.Core.Helpers;
+    using Labyrinth.Core.Player.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
     public class PlayField : IPlayField, IMemorizable

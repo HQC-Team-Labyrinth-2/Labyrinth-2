@@ -3,9 +3,10 @@
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
 
-    public class MoveRight : MoveCommand,ICommand
+    public class MoveRight : MoveCommand, ICommand
     {
-        public MoveRight():base(Direction.Right)
+        public MoveRight()
+            : base(Direction.Right)
         {
         }
 

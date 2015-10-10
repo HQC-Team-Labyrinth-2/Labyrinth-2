@@ -4,11 +4,11 @@
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
 
-    public class ExitCommand:ICommand
+    public class ExitCommand : ICommand
     {
         public void Execute(ICommandContext commandContext)
         {
-            commandContext.Output.PrintMessage(GlobalMessages.GoodbyeMessage);
+            commandContext.Output.ShowInfoMessage(GlobalMessages.GoodbyeMessage);
             Environment.Exit(0);
         }
 

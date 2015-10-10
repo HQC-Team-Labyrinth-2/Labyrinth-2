@@ -1,8 +1,5 @@
-﻿using System;
-
-namespace Labyrinth.Core.PlayField
+﻿namespace Labyrinth.Core.PlayField
 {
-
     using Labyrinth.Core.Common;
     using Labyrinth.Core.PlayField.Contracts;
 

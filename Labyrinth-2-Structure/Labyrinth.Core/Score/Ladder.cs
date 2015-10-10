@@ -9,8 +9,7 @@
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Score.Contracts;
 
-    //TODO: add class ContentProvider and provide the result for print!
-    public class Ladder : ILadder, IContentProvider
+    public class Ladder : ILadder, IScoreLadderProvider
     {
         private static object syncRoot = new object();
         private static Ladder instance;
@@ -56,6 +55,7 @@
                 {
                     throw new NullReferenceException("Output renderer can't be null!");
                 }
+
                 this.outputRenderer = value;
             }
         }
@@ -73,28 +73,10 @@
                 {
                     throw new ArgumentOutOfRangeException("Capacity can't be negativ!");
                 }
+
                 this.capacity = value;
             }
         }
-
-        //public void PrintLadder()
-        //{
-        //    if (topResults.Count == 0)
-        //    {
-        //        this.outputRenderer.PrintMessage(GlobalErrorMessages.ScoreBoardEmptyMessage);
-        //    }
-        //    else
-        //    {
-        //        for (int index = 0; index < topResults.Count; index++)
-        //        {
-        //            string result = String.Format(
-        //                "{0}. {1} --> {2} moves", index + 1,
-        //                 topResults[index].PlayerName, topResults[index].MovesCount
-        //                 );
-        //            this.outputRenderer.PrintMessage(result);
-        //        }
-        //    }
-        //}
 
         public bool ResultQualifiesInLadder(int result)
         {
@@ -134,7 +116,6 @@
             {
                 content.Append(GlobalErrorMessages.ScoreBoardEmptyMessage);
                 return content.ToString();
-                //this.outputRenderer.PrintMessage(GlobalErrorMessages.ScoreBoardEmptyMessage);
             }
             else
             {
@@ -145,7 +126,6 @@
                 }
 
                 return content.ToString();
-                //this.outputRenderer.PrintMessage(result);
             }
         }
     }

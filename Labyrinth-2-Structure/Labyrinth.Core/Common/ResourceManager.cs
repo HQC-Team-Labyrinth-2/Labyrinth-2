@@ -1,27 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labyrinth.Core.Common
+﻿namespace Labyrinth.Core.Common
 {
     public class ResourceManager
     {
+        //TODO: Implement menu
         private static volatile ResourceManager instance;
 
-        private readonly char StandardGameCellEmptyValue = '-';
-        private readonly char StandardGameCellWallValue = 'X';
+        private readonly char standardGameCellEmptyValue = '-';
+        private readonly char standardGameCellWallValue = 'X';
 
-        private readonly char StandardGamePlayerChar = '*';
+        private readonly char standardGamePlayerChar = '*';
 
-        private readonly int StandardGameLabyrinthRows = 9;
-        private readonly int StandardGameLabyrinthCols = 9;
+        private readonly int standardGameLabyrinthRows = 9;
+        private readonly int standardGameLabyrinthCols = 9;
 
-        private readonly int StandardGameNumberOfPlayers = 1;
+        private readonly int standardGameNumberOfPlayers = 1;
 
-        private readonly int StandardGameTopResultCapacity = 5;
-
+        private readonly int standardGameTopResultCapacity = 5;
 
         private ResourceManager()
         {
@@ -29,7 +23,6 @@ namespace Labyrinth.Core.Common
 
         private ResourceManager GetInstance()
         {
-
             if (instance == null)
             {
                 instance = new ResourceManager();
