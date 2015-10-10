@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Labyrinth.Core.CommandFactory;
 using Labyrinth.Core.Commands.MoveCommands;
 using Labyrinth.Core.Commands;
+using Labyrinth.Core.Helpers.CustomExceptions;
 
 namespace Labyrinth2Tests
 {
@@ -71,6 +72,13 @@ namespace Labyrinth2Tests
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("undo");
             Assert.AreEqual(typeof(UndoCommand), received.GetType());
+        }
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCommandException))]
+        public void CreateCommandShouldReturnException()
+        {
+            var commandFactory = new SimpleCommandFactory();
+            var received = commandFactory.CreateCommand("dsadsadas");
         }
     }
 }
