@@ -128,5 +128,15 @@
                 return content.ToString();
             }
         }
+
+        public int CurrentCount()
+        {
+            return this.topResults.Count;
+        }
+
+        public void RestartLadder()
+        {
+            instance = null;
+        }
     }
 }
