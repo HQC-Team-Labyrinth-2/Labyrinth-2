@@ -65,7 +65,7 @@
     <Compile Include="Commands\ScoreCommand.cs" />
     <Compile Include="Commands\UndoCommand.cs" />
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="Common\Contracts\IRandomGenerator.cs" />
+    <Compile Include="Common\Contracts\IRandomNumberGenerator.cs" />
     <Compile Include="Common\Direction.cs" />
     <Compile Include="Helpers\CustomExceptions\InvalidCommandException.cs" />
     <Compile Include="Helpers\CustomExceptions\InvalidPlayerPositionException.cs" />
@@ -78,7 +78,6 @@
     <Compile Include="Helpers\Position.cs" />
     <Compile Include="Common\RandomGenerator.cs" />
     <Compile Include="GameEngine\Contracts\IGameEngine.cs" />
-    <Compile Include="GameEngine\GameEngine.cs" />
     <Compile Include="GameEngine\StandardGameEngine.cs" />
     <Compile Include="Input\Contracts\ICommandInputProvider.cs" />
     <Compile Include="Input\Contracts\IInputProvider.cs" />
@@ -97,7 +96,7 @@
     <Compile Include="PlayField\MementoCaretaker.cs" />
     <Compile Include="PlayField\PlayFieldMemento.cs" />
     <Compile Include="PlayField\StandardPlayFieldGenerator.cs" />
-    <Compile Include="Common\Contracts\IContentProvider.cs" />
+    <Compile Include="Common\Contracts\IScoreLadderContentProvider.cs" />
     <Compile Include="Score\Contracts\IResult.cs" />
     <Compile Include="Score\Contracts\IScoreLadder.cs" />
     <Compile Include="Score\ScoreLadder.cs" />

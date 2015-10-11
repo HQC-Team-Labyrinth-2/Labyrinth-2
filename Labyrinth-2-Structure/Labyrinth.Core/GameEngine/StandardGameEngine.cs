@@ -34,6 +34,15 @@ namespace Labyrinth.Core.GameEngine
         private IPlayer player;
         private IPlayField playField;
 
+        /// <summary>
+        /// Standard game engine constructor.
+        /// </summary>
+        /// <param name="renderer">Output renderer.</param>
+        /// <param name="inputProvider">Input provider.</param>
+        /// <param name="playField">Game play field.</param>
+        /// <param name="commandFactory">Game command factory.</param>
+        /// <param name="logger">Command execution logger.</param>
+        /// <param name="player">Player</param>
         public StandardGameEngine(
             IRenderer renderer,
             IInputProvider inputProvider,
@@ -52,11 +61,18 @@ namespace Labyrinth.Core.GameEngine
             this.memory = new MementoCaretaker(new List<IMemento>());
         }
 
+        /// <summary>
+        /// Method that initialize the game play field.
+        /// </summary>
+        /// <param name="randomGenerator">Random number generator used to generate the play field with random cells.</param>
         public void Initialize(IRandomNumberGenerator randomGenerator)
         {
             this.playField.InitializePlayFieldCells(randomGenerator);
         }
 
+        /// <summary>
+        /// Method that run the main game logic.
+        /// </summary>
         public void Start()
         {
             string inputCommand = string.Empty;
@@ -69,18 +85,18 @@ namespace Labyrinth.Core.GameEngine
                 inputCommand = this.input.GetCommand();
                 try
                 {
-                    this.ProccessInput(inputCommand);
+                    this.ProccessCommand(inputCommand);
                 }
                 catch (InvalidPlayerPositionException e)
                 {
                     this.renderer.ShowInfoMessage(e.Message);
                     if (this.PlayerWantNewGame())
                     {
-                        this.ProccessInput("restart");
+                        this.ProccessCommand("restart");
                     }
                     else
                     {
-                        this.ProccessInput("exit");
+                        this.ProccessCommand("exit");
                     }
                 }
                 catch (InvalidCommandException e)
@@ -102,16 +118,20 @@ namespace Labyrinth.Core.GameEngine
 
                     if (this.PlayerWantNewGame())
                     {
-                        this.ProccessInput("restart");
+                        this.ProccessCommand("restart");
                     }
                     else
                     {
-                        this.ProccessInput("exit");
+                        this.ProccessCommand("exit");
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Method that check winning condition.
+        /// </summary>
+        /// <returns>If player win the game return true else return false.</returns>
         private bool PlayerWin()
         {
             bool isGameOver = false;
@@ -129,10 +149,14 @@ namespace Labyrinth.Core.GameEngine
             return isGameOver;
         }
 
-        private void ProccessInput(string input)
+        /// <summary>
+        /// Method that proccess the player command.
+        /// </summary>
+        /// <param name="commandName">Command name from the input provider</param>
+        private void ProccessCommand(string commandName)
         {
             this.commandContext = new CommandContext(this.playField, this.renderer, this.memory, this.ladder, this.player);
-            string inputToLower = input.ToLower();
+            string inputToLower = commandName.ToLower();
 
             ICommand command = this.commandFactory.CreateCommand(inputToLower);
 
@@ -141,6 +165,10 @@ namespace Labyrinth.Core.GameEngine
             this.logger.Log("Executed command - " + command.GetName());
         }
 
+        /// <summary>
+        /// Ask player for game restart.
+        /// </summary>
+        /// <returns>Player choice</returns>
         private bool PlayerWantNewGame()
         {
             this.renderer.ShowInfoMessage("Do you want to restart the game?y/n ");
