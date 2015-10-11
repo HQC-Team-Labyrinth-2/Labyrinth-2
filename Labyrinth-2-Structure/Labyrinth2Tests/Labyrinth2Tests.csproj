@@ -61,6 +61,7 @@
     <Compile Include="PlayerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CellTests.cs" />
+    <Compile Include="RandomNumberGeneratorTests.cs" />
     <Compile Include="ResultTests.cs" />
     <Compile Include="LadderTests.cs" />
   </ItemGroup>

@@ -6,13 +6,13 @@
     /// <summary>
     /// This class creates an instance of a RandomGenerator, when such is needed
     /// </summary>
-    public class RandomGenerator : IRandomNumberGenerator
+    public class RandomNumberGenerator : IRandomNumberGenerator
     {
-        private static volatile RandomGenerator instance;
+        private static volatile RandomNumberGenerator instance;
         private static object syncRoot = new object();
         private Random random;
 
-        private RandomGenerator()
+        private RandomNumberGenerator()
         {
             this.random = new Random();
         }
@@ -20,7 +20,7 @@
         /// <summary> RandomGenerator Instance is a property in the RandomGenartor class
         /// This property ensures the implementation of the Singleton design pattern.
         /// </summary>
-        public static RandomGenerator Instance
+        public static RandomNumberGenerator Instance
         {
             get
             {
@@ -28,9 +28,9 @@
                 {
                     lock (syncRoot)
                     {
-                        if (instance == null) 
-                        { 
-                            instance = new RandomGenerator();
+                        if (instance == null)
+                        {
+                            instance = new RandomNumberGenerator();
                         }
                     }
                 }
@@ -47,7 +47,7 @@
         /// <returns>Random generated number in given range.</returns>
         public int GenerateNext(int from, int to)
         {
-            return this.random.Next(from, to);
+            return this.random.Next(from, to + 1);
         }
     }
 }

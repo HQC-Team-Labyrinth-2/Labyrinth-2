@@ -28,7 +28,7 @@
             {
                 for (int col = 0; col < this.cols; col++)
                 {
-                    int cellRandomValue = rand.GenerateNext(0, 2);
+                    int cellRandomValue = rand.GenerateNext(0, 1);
 
                     char charValue;
                     if (cellRandomValue == 0)

@@ -76,7 +76,7 @@
     <Compile Include="Common\Logger\FileLogger.cs" />
     <Compile Include="Common\Logger\ILogger.cs" />
     <Compile Include="Helpers\Position.cs" />
-    <Compile Include="Common\RandomGenerator.cs" />
+    <Compile Include="Common\RandomNumberGenerator.cs" />
     <Compile Include="GameEngine\Contracts\IGameEngine.cs" />
     <Compile Include="GameEngine\StandardGameEngine.cs" />
     <Compile Include="Input\Contracts\ICommandInputProvider.cs" />

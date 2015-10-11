@@ -33,7 +33,7 @@
            
             var commandFactory = new SimpleCommandFactory();
             IGameEngine gameEngine = new StandardGameEngine(output, input, playField, commandFactory, logger, player);
-            gameEngine.Initialize(RandomGenerator.Instance);
+            gameEngine.Initialize(RandomNumberGenerator.Instance);
             gameEngine.Start();
         }
     }

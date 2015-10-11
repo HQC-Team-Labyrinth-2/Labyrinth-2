@@ -16,7 +16,7 @@
         /// <param name="context">Contains all parameters that command need for execute.</param>
         public void Execute(ICommandContext context)
         {
-            context.PlayField.InitializePlayFieldCells(RandomGenerator.Instance);
+            context.PlayField.InitializePlayFieldCells(RandomNumberGenerator.Instance);
 
             context.Memory.Memento.Clear();
 
