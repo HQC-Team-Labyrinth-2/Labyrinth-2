@@ -29,7 +29,30 @@ namespace Labyrinth2Tests
             var generator = new StandardPlayFieldGenerator(position, 3, 3);
             PlayField field = new PlayField(generator, position, 4, 4);
         }
+		
+		  [TestMethod]
+        public void CheskPlayFieldRowsGetter()
+        {
+            var position = new Position(0, 2);
+            var generator = new StandardPlayFieldGenerator(position, 3, 3);
+            int row=4;
+            int col = 5;
+            PlayField field = new PlayField(generator, position, row, col);
+            Assert.AreEqual(row,field.NumberOfRows);
 
+        }
+
+         [TestMethod]
+        public void CheskPlayFieldCollsGetter()
+        {
+            var position = new Position(0, 2);
+            var generator = new StandardPlayFieldGenerator(position, 3, 3);
+            int row = 4;
+            int col = 5;
+            PlayField field = new PlayField(generator, position, row, col);
+            Assert.AreEqual(col, field.NumberOfCols);
+
+        }
 
 
          
