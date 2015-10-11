@@ -5,8 +5,6 @@
 
     public interface IScoreLadder : IScoreLadderContentProvider
     {
-        IRenderer OutputRenderer { set; }
-
         int Capacity { set; }
 
         void AddResultInLadder(int movesCount, string playerName);

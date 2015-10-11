@@ -1,4 +1,6 @@
-﻿namespace Labyrinth.Core.PlayField
+﻿using System;
+
+namespace Labyrinth.Core.PlayField
 {
     using Labyrinth.Common.Contracts;
     using Labyrinth.Core.Common;
@@ -11,6 +13,9 @@
     {
         private ICell[,] playField;
         private IPlayFieldGenerator playFieldGenerator;
+        private int rows;
+        private int colums;
+        private IPosition playerPosition;
 
         public PlayField(
             IPlayFieldGenerator generator,
@@ -24,20 +29,58 @@
             this.PlayerPosition = playerPosition;
         }
 
-        public IPosition PlayerPosition { get; private set; }
-
-        //TODO: validation
-        public int NumberOfRows
+        public IPosition PlayerPosition
         {
-            get;
-            private set;
+            get
+            {
+                return this.playerPosition;
+            }
+            private set
+            {
+                if (value.Column > this.NumberOfCols - 1 ||
+                    value.Column < 0 ||
+                    value.Row > this.NumberOfRows - 1 ||
+                    value.Row < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Player position can't be out of the play field!");
+                }
+
+                this.playerPosition = value;
+            }
         }
 
-        //TODO: validation
+        public int NumberOfRows
+        {
+            get
+            {
+                return this.rows;
+            }
+            private set
+            {
+                if (value < 3)
+                {
+                    throw new ArgumentOutOfRangeException("Number of rows must be grather than 3!");
+                }
+
+                this.rows = value;
+            }
+        }
+
         public int NumberOfCols
         {
-            get;
-            private set;
+            get
+            {
+                return this.colums;
+            }
+            private set
+            {
+                if (value < 3)
+                {
+                    throw new ArgumentOutOfRangeException("Number of colums must be grather than 3!");
+                }
+
+                this.colums = value;
+            }
         }
 
         public void InitializePlayFieldCells(IRandomNumberGenerator random)
@@ -50,10 +93,13 @@
             return this.playField[position.Row, position.Column];
         }
 
-        //TODO Validate Remove player position
         public void RemovePlayer(IPlayer player)
         {
-            this.playField[player.CurentCell.Position.Row, player.CurentCell.Position.Column].ValueChar = Constants.StandardGameCellEmptyValue;
+            if (player.CurentCell.Position.Row == this.PlayerPosition.Row &&
+                player.CurentCell.Position.Column == this.PlayerPosition.Column)
+            {
+                this.playField[player.CurentCell.Position.Row, player.CurentCell.Position.Column].ValueChar = Constants.StandardGameCellEmptyValue;
+            }
         }
 
         public void AddPlayer(IPlayer player, IPosition position)

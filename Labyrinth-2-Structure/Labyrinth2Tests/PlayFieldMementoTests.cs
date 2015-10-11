@@ -28,15 +28,6 @@ namespace Labyrinth2Tests
       }
 
       [TestMethod]
-      [ExpectedException(typeof(ArgumentException))]
-      public void TestMemmentoWithIncorrectData()
-      {
-          var position = new Position(0, 10);
-          var cell = new Cell[2, 2];
-          var mementoField = new PlayFieldMemento(cell, position);
-      }
-
-      [TestMethod]
 
       public void TestMementoPlayFieldRowSize()
       {

@@ -15,7 +15,6 @@
         private static ScoreLadder instance;
         private int capacity;
         private List<Result> topResults;
-        private IRenderer outputRenderer;
 
         private ScoreLadder()
         {
@@ -42,24 +41,6 @@
             }
         }
 
-        public IRenderer OutputRenderer
-        {
-            get
-            {
-                return this.outputRenderer;
-            }
-
-            set
-            {
-                if (value == null)
-                {
-                    throw new NullReferenceException("Output renderer can't be null!");
-                }
-
-                this.outputRenderer = value;
-            }
-        }
-
         public int Capacity
         {
             get
@@ -70,7 +51,7 @@
             set
             {
                 if (value < 1)
-                {//TODO:Capacity of ladder cant be  negative custom exception
+                {
                     throw new ArgumentOutOfRangeException("Capacity can't be negativ!");
                 }
 

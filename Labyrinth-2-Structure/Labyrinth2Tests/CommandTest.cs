@@ -11,8 +11,7 @@ namespace Labyrinth2Tests
         [TestMethod]
         public void TestMoveUpCommand()
         {
-
-           // ICommandContext context = new CommandContext();
+            
         }
     }
 }

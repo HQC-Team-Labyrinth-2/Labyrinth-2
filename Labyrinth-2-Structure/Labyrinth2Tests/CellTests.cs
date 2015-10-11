@@ -28,14 +28,6 @@ namespace Labyrinth2Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestMaxNumberRowsOfLabyrinth()
-        {
-            Cell cell = new Cell(new Position(1, 1));
-            cell.Position.Row = int.MaxValue;
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestNegativeNumberForCol()
         {
             Cell cell = new Cell(new Position(1, 1));
@@ -48,14 +40,6 @@ namespace Labyrinth2Tests
             Cell cell = new Cell(new Position(1, 1));
             cell.Position.Column = 5;
             Assert.AreEqual(cell.Position.Column, 5);
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestMaxNumberColsOfLabyrinth()
-        {
-            Cell cell = new Cell(new Position(1, 1));
-            cell.Position.Column = int.MaxValue;
         }
 
         [TestMethod]

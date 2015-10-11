@@ -24,10 +24,10 @@
 
             set
             {
-                if (value > Constants.StandardGameLabyrinthCols || value < 0)
+                if (value < 0)
                 {
                     throw new ArgumentException(
-                        string.Format("Column value must be between {0} and {1}", 1, Constants.StandardGameLabyrinthCols));
+                        string.Format("Column value must be larger or equal to 1"));
                 }
                 this.column = value;
             }
@@ -42,10 +42,9 @@
 
             set
             {
-                if (value > Constants.StandardGameLabyrinthRows || value < 0)
+                if (value < 0)
                 {
-                    throw new ArgumentException(
-                        string.Format("Row value must be between {0} and {1}", 1, Constants.StandardGameLabyrinthRows));
+                    throw new ArgumentException(string.Format("Row value must be larger or equal to 0"));
                 }
                 this.row = value;
             }

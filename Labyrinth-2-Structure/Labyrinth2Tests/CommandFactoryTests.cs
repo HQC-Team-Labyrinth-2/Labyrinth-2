@@ -24,6 +24,15 @@ namespace Labyrinth2Tests
         {
             var commandFactory = new SimpleCommandFactory();
             var received = commandFactory.CreateCommand("d");
+            var received2 = commandFactory.CreateCommand("d");
+            Assert.AreSame(received, received2);
+        }
+
+        [TestMethod]
+        public void TestCreateCommandShouldReturnMoveDownFromDictionary()
+        {
+            var commandFactory = new SimpleCommandFactory();
+            var received = commandFactory.CreateCommand("d");
             Assert.AreEqual(typeof(MoveDown), received.GetType());
         }
 
@@ -66,6 +75,7 @@ namespace Labyrinth2Tests
             var received = commandFactory.CreateCommand("exit");
             Assert.AreEqual(typeof(ExitCommand), received.GetType());
         }
+
         [TestMethod]
         public void TestCreateCommandShouldReturnUndo()
         {
@@ -73,6 +83,7 @@ namespace Labyrinth2Tests
             var received = commandFactory.CreateCommand("undo");
             Assert.AreEqual(typeof(UndoCommand), received.GetType());
         }
+
         [TestMethod]
         [ExpectedException(typeof(InvalidCommandException))]
         public void TestCreateCommandShouldReturnException()
