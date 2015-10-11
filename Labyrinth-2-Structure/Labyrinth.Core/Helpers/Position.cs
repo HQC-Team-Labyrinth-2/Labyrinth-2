@@ -24,11 +24,11 @@
 
             set
             {
-                //if(value > Constants.StandardGameLabyrinthCols || value <= 0)
-                //{
-                //    throw new ArgumentException(
-                //        string.Format("Column value must be between {0} and {1}", 1, Constants.StandardGameLabyrinthCols));
-                //}
+                if (value > Constants.StandardGameLabyrinthCols || value < 0)
+                {
+                    throw new ArgumentException(
+                        string.Format("Column value must be between {0} and {1}", 1, Constants.StandardGameLabyrinthCols));
+                }
                 this.column = value;
             }
         }
@@ -42,11 +42,11 @@
 
             set
             {
-                //if (value > Constants.StandardGameLabyrinthRows || value <= 0)
-                //{
-                //    throw new ArgumentException(
-                //        string.Format("Row value must be between {0} and {1}", 1, Constants.StandardGameLabyrinthRows));
-                //}
+                if (value > Constants.StandardGameLabyrinthRows || value < 0)
+                {
+                    throw new ArgumentException(
+                        string.Format("Row value must be between {0} and {1}", 1, Constants.StandardGameLabyrinthRows));
+                }
                 this.row = value;
             }
         }
