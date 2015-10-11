@@ -128,10 +128,6 @@ namespace Labyrinth.Core.GameEngine
             }
         }
 
-        /// <summary>
-        /// Method that check winning condition.
-        /// </summary>
-        /// <returns>If player win the game return true else return false.</returns>
         private bool PlayerWin()
         {
             bool isGameOver = false;
@@ -149,10 +145,6 @@ namespace Labyrinth.Core.GameEngine
             return isGameOver;
         }
 
-        /// <summary>
-        /// Method that proccess the player command.
-        /// </summary>
-        /// <param name="commandName">Command name from the input provider</param>
         private void ProccessCommand(string commandName)
         {
             this.commandContext = new CommandContext(this.playField, this.renderer, this.memory, this.ladder, this.player);
@@ -165,10 +157,6 @@ namespace Labyrinth.Core.GameEngine
             this.logger.Log("Executed command - " + command.GetName());
         }
 
-        /// <summary>
-        /// Ask player for game restart.
-        /// </summary>
-        /// <returns>Player choice</returns>
         private bool PlayerWantNewGame()
         {
             this.renderer.ShowInfoMessage("Do you want to restart the game?y/n ");
