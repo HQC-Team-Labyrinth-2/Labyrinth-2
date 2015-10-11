@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Labyrinth.Core.PlayField;
 using Labyrinth.Core.Helpers;
 using Labyrinth.Core.Common;
+using Labyrinth.Core.PlayField.Contracts;
 
 namespace Labyrinth2Tests
 {
@@ -87,6 +88,39 @@ namespace Labyrinth2Tests
             Cell cell = new Cell(new Position(1, 1));
             cell.ValueChar = Constants.StandardGameCellWallValue;
             Assert.IsFalse(cell.IsEmpty());
+        }
+
+        [TestMethod]
+        public void TestCloneShouldReturDifferentReference()
+        {
+            Cell cell1 = new Cell(new Position(1,1));
+            ICell cell2 = cell1.Clone();
+            Assert.AreNotSame(cell1,cell2);
+        }
+
+        [TestMethod]
+        public void TestCloneShouldReturCellWithDifferentPositionReference()
+        {
+            Cell cell1 = new Cell(new Position(1, 1));
+            ICell cell2 = cell1.Clone();
+            Assert.AreNotSame(cell1.Position, cell2.Position);
+        }
+
+        [TestMethod]
+        public void TestCloneShouldReturnCellWithSameCharValue()
+        {
+            Cell cell1 = new Cell(new Position(1, 1));
+            ICell cell2 = cell1.Clone();
+            Assert.AreEqual(cell1.ValueChar, cell2.ValueChar);
+        }
+
+        [TestMethod]
+        public void TestCloneShouldReturnCellWithSamePositionValues()
+        {
+            Cell cell1 = new Cell(new Position(1, 1));
+            ICell cell2 = cell1.Clone();
+            Assert.AreEqual(cell1.Position.Column, cell2.Position.Column);
+            Assert.AreEqual(cell1.Position.Row,cell2.Position.Row);
         }
     }
 }

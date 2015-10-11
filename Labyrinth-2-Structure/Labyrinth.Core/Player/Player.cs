@@ -1,14 +1,14 @@
-﻿using Labyrinth.Core.Helpers.Contracts;
-
-namespace Labyrinth.Core.Player
+﻿namespace Labyrinth.Core.Player
 {
     using System;
+    using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.Player.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
     public class Player : IPlayer
     {
         private string name;
+        private ICell currentCell;
         
         public Player(string name, ICell cell)
         {
@@ -39,7 +39,23 @@ namespace Labyrinth.Core.Player
             }
         }
 
-        public ICell CurentCell { get; set; }
+        public ICell CurentCell
+        {
+            get
+            {
+                return this.currentCell;
+            }
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentNullException("Current player cell can't be null!");
+                }
+
+                this.currentCell = value;
+
+            }
+        }
 
         public IPosition StartPosition { get; private set; }
     }
