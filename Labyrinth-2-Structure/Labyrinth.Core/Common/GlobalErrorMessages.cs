@@ -1,5 +1,8 @@
 ﻿namespace Labyrinth.Core.Common
 {
+    /// <summary>
+    /// This class contains the global error messages as constants
+    /// </summary>
     public class GlobalErrorMessages
     {
         public const string InvalidMoveMessage = "Invalid move!You lost";

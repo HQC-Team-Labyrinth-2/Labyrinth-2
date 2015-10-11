@@ -1,5 +1,8 @@
 ﻿namespace Labyrinth.Core.Common
 {
+    /// <summary>
+    /// This class contains the standart constant values and symbols for the game
+    /// </summary>
     public class Constants
     {
         public const char StandardGameCellEmptyValue = '-';

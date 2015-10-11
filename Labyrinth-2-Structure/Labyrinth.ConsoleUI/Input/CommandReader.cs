@@ -3,6 +3,11 @@
     using System;
     using Labyrinth.Core.Input.Contracts;
 
+    /// <summary>
+    /// This class reads the pressed key from the console and returns the command as a string,
+    /// which is further processed in the CommandFactory class
+    /// </summary>
+
     public class CommandReader : ICommandInputProvider
     {
         public string GetCommand()

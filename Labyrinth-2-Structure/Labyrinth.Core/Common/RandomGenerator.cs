@@ -3,6 +3,10 @@
     using System;
     using Labyrinth.Common.Contracts;
 
+    /// <summary>
+    /// This class creates an instance of a RandomGenerator, when such is needed
+    /// </summary>
+
     public class RandomGenerator : IRandomGenerator
     {
         private static volatile RandomGenerator instance;
@@ -13,6 +17,10 @@
         {
             this.random = new Random();
         }
+
+        /// <summary> RandomGenerator Instance is a property in the RandomGenartor class
+        /// This property ensures the implementation of the Singleton design pattern.
+        /// </summary>
 
         public static RandomGenerator Instance
         {
