@@ -39,13 +39,13 @@
         void InitializePlayFieldCells(IRandomNumberGenerator generator);
 
         /// <summary>
-        /// Method that removes the player
+        /// Method that removes ????
         /// </summary>
         /// <param name="player">Parameter of type IPlayer</param>
         void RemovePlayer(IPlayer player);
 
         /// <summary>
-        /// Method that adds the player
+        /// Method that adds ????
         /// </summary>
         /// <param name="player">Parameter of type IPlayer</param>
         /// <param name="position">Parameter of type IPositin</param>

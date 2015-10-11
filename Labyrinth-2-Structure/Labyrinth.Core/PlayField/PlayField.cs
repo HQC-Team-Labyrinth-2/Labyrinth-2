@@ -7,11 +7,22 @@
     using Labyrinth.Core.Player.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
+    /// <summary>
+    /// This class represents the game playfield
+    /// </summary>
     public class PlayField : IPlayField, IMemorizable
     {
         private ICell[,] playField;
         private IPlayFieldGenerator playFieldGenerator;
 
+
+        /// <summary>
+        /// Constructor with 4 parameters
+        /// </summary>
+        /// <param name="generator">Parameter of type IPlayFieldGenerator</param>
+        /// <param name="playerPosition">Parameter of type IPosition</param>
+        /// <param name="rows">Parameter of type int</param>
+        /// <param name="colums">Parameter of type int</param>
         public PlayField(
             IPlayFieldGenerator generator,
             IPosition playerPosition,
@@ -24,9 +35,16 @@
             this.PlayerPosition = playerPosition;
         }
 
+        /// <summary>
+        /// Property of type int
+        /// </summary>
         public IPosition PlayerPosition { get; private set; }
 
         //TODO: validation
+
+        /// <summary>
+        /// Property of type int
+        /// </summary>
         public int NumberOfRows
         {
             get;
@@ -34,17 +52,29 @@
         }
 
         //TODO: validation
+
+        /// <summary>
+        /// Property of type int
+        /// </summary>
         public int NumberOfCols
         {
             get;
             private set;
         }
 
+        /// <summary>
+        /// Method that initializes the playfield
+        /// </summary>
+        /// <param name="random">Parameter of type IRandomNumberGenerator</param>
         public void InitializePlayFieldCells(IRandomNumberGenerator random)
         {
             this.playField = this.playFieldGenerator.GeneratePlayField(random);
         }
-
+        /// <summary>
+        /// Method that ???
+        /// </summary>
+        /// <param name="position"></param>
+        /// <returns></returns>
         public ICell GetCell(IPosition position)
         {
             return this.playField[position.Row, position.Column];
