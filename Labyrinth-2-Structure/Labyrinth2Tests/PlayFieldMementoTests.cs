@@ -18,5 +18,43 @@ namespace Labyrinth2Tests
             var playFieldMemento = new PlayFieldMemento(playField, position);
             Assert.AreNotEqual(playFieldMemento, playFieldMemento.PlayField);
         }
+		
+	  [TestMethod]
+      public void TestMemmentoWithCorrectData()
+      {
+          var position = new Position(0,1);       
+          var cell = new Cell[2,2];
+          var mementoField = new PlayFieldMemento(cell, position);
+      }
+
+      [TestMethod]
+      [ExpectedException(typeof(ArgumentException))]
+      public void TestMemmentoWithIncorrectData()
+      {
+          var position = new Position(0, 10);
+          var cell = new Cell[2, 2];
+          var mementoField = new PlayFieldMemento(cell, position);
+      }
+
+      [TestMethod]
+
+      public void TestMementoPlayFieldRowSize()
+      {
+          var position = new Position(0, 1);
+          var cell = new Cell[2, 2];
+          var mementoField = new PlayFieldMemento(cell, position);
+          Assert.AreEqual(cell.GetLength(0),mementoField.PlayField.GetLength(0));
+      }
+
+      [TestMethod]
+      public void TestMementoPlayFieldColSize()
+      {
+          var position = new Position(0, 1);
+          var cell = new Cell[2, 2];
+          var mementoField = new PlayFieldMemento(cell, position);
+          Assert.AreEqual(cell.GetLength(1), mementoField.PlayField.GetLength(1));
+      }
+		
+		
     }
 }
