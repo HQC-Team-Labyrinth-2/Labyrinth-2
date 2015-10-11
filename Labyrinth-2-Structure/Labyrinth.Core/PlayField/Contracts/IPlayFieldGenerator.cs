@@ -4,6 +4,6 @@
 
     public interface IPlayFieldGenerator
     {
-        ICell[,] GeneratePlayField(IRandomGenerator rand);
+        ICell[,] GeneratePlayField(IRandomNumberGenerator rand);
     }
 }

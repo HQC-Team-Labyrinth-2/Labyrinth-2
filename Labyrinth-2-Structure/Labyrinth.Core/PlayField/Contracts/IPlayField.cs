@@ -15,7 +15,7 @@
 
         ICell GetCell(IPosition position);
 
-        void InitializePlayFieldCells(IRandomGenerator generator);
+        void InitializePlayFieldCells(IRandomNumberGenerator generator);
 
         void RemovePlayer(IPlayer player);
 

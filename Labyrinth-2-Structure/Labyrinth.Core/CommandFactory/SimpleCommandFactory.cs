@@ -8,15 +8,26 @@
     using Labyrinth.Core.Common;
     using Labyrinth.Core.Helpers.CustomExceptions;
 
+    /// <summary>
+    /// Command factory class that produce all action commands!
+    /// </summary>
     public class SimpleCommandFactory : ICommandFactory
     {
         private readonly IDictionary<string, ICommand> commandDictionary;
 
+        /// <summary>
+        /// Constructor for SimpleCommandFactory
+        /// </summary>
         public SimpleCommandFactory()
         {
             this.commandDictionary = new Dictionary<string, ICommand>();
         }
 
+        /// <summary>
+        /// Function for creating commands
+        /// </summary>
+        /// <param name="command">Command name</param>
+        /// <returns>New command object</returns>
         public ICommand CreateCommand(string command)
         {
             ICommand resultCommand;

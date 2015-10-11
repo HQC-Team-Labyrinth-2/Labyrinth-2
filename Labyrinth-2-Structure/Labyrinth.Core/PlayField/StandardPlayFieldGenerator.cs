@@ -22,7 +22,7 @@
             this.cols = cols;
         }
 
-        public ICell[,] GeneratePlayField(IRandomGenerator rand)
+        public ICell[,] GeneratePlayField(IRandomNumberGenerator rand)
         {
             for (int row = 0; row < this.rows; row++)
             {

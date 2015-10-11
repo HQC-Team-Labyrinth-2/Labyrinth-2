@@ -40,7 +40,7 @@
             private set;
         }
 
-        public void InitializePlayFieldCells(IRandomGenerator random)
+        public void InitializePlayFieldCells(IRandomNumberGenerator random)
         {
             this.playField = this.playFieldGenerator.GeneratePlayField(random);
         }

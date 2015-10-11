@@ -1,5 +1,4 @@
-﻿using Labyrinth.Core.GameEngine.Contracts;
-
+﻿
 namespace Labyrinth.Core.GameEngine
 {
     using System.Collections.Generic;
@@ -11,6 +10,7 @@ namespace Labyrinth.Core.GameEngine
     using Labyrinth.Core.Helpers;
     using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.Helpers.CustomExceptions;
+    using Labyrinth.Core.GameEngine.Contracts;
     using Labyrinth.Core.Input.Contracts;
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Player.Contracts;
@@ -19,6 +19,9 @@ namespace Labyrinth.Core.GameEngine
     using Labyrinth.Core.Score;
     using Labyrinth.Core.Score.Contracts;
 
+    /// <summary>
+    /// Standard game engine class that run the standard game logic.
+    /// </summary>
     public class StandardGameEngine : IGameEngine
     {
         private readonly IRenderer renderer;
@@ -49,7 +52,7 @@ namespace Labyrinth.Core.GameEngine
             this.memory = new MementoCaretaker(new List<IMemento>());
         }
 
-        public void Initialize(IRandomGenerator randomGenerator)
+        public void Initialize(IRandomNumberGenerator randomGenerator)
         {
             this.playField.InitializePlayFieldCells(randomGenerator);
         }
