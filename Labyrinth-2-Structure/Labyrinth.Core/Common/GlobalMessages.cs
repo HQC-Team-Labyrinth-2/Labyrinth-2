@@ -10,13 +10,15 @@
 
         public const string GoodbyeMessage = "Good Bye";
 
-        public const string GetInputMessage = "Enter your move (l for left," +
-            "r  for right, u for up, d for down and undo): ";
+        public const string GetInputMessage = "Enter your move (use the arrow keys and 'u' for undo): ";
 
         public const string WellcomeMessage = "Welcome to “Labirinth” game." +
-            " Your task is to escape from the labyrinth with as few moves as possible." +
-            " Use 'top' to view the top scoreboard," +
-            " 'restart' to start a new game and 'exit' to quit the game.";
+            " The dashes are the cells that you can step on" +
+            " and the X-es are the walls of the labyrinth." +
+            " Your task is to escape with as few moves as possible." +
+            " Good luck, fellow! " +
+            " Use 't' to view the top scoreboard," +
+            " 'r' to start a new game and 'e' to quit the game.";
 
         public const string CongratulationMessage = "Congratulations! You escaped in {0} moves.";
     }
