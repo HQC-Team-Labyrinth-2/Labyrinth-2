@@ -5,7 +5,8 @@ using Labyrinth.Core.Commands.MoveCommands;
 using Labyrinth.Core.Commands;
 using Labyrinth.Core.Helpers.CustomExceptions;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
+
 {
     [TestClass]
     public class CommandFactoryTests

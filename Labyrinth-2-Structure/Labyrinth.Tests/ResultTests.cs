@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Labyrinth.Core.Score;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     [TestClass]
     public class ResultTests

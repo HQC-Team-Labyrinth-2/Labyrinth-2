@@ -5,7 +5,7 @@ using Labyrinth.Core.Helpers;
 using Labyrinth.Core.Common;
 using Labyrinth.Core.PlayField.Contracts;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     [TestClass]
     public class CellTests

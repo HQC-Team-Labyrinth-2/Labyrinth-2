@@ -1,4 +1,4 @@
-﻿namespace Labyrinth2Tests
+﻿namespace Labyrinth.Tests
 {
     using System;
     using Labyrinth.Core.Common;

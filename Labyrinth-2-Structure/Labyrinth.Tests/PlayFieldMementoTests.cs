@@ -5,7 +5,7 @@ using Labyrinth.Core.PlayField;
 using Labyrinth.Core.PlayField.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     [TestClass]
     public class PlayFieldMementoTests

@@ -4,7 +4,7 @@ using System.Reflection;
 using Labyrinth.Core.Common.Logger;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     [TestClass]
     public class FileLoggerTest

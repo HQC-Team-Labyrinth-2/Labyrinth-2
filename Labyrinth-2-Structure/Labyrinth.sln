@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth.ConsoleUI", "Laby
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth.Core", "Labyrinth.Core\Labyrinth.Core.csproj", "{13294FAA-16DD-4241-8463-C6416CEAE0AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth2Tests", "Labyrinth2Tests\Labyrinth2Tests.csproj", "{CE4CDF7F-9612-46F7-8B82-BCCFB24FEC7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Labyrinth.Tests", "Labyrinth.Tests\Labyrinth.Tests.csproj", "{CE4CDF7F-9612-46F7-8B82-BCCFB24FEC7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

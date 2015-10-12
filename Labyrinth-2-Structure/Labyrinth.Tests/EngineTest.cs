@@ -18,7 +18,7 @@ using Labyrinth.Core.PlayField.Contracts;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     [TestClass]
     public class EngineTest

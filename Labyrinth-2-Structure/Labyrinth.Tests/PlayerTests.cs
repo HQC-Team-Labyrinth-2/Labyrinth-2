@@ -5,7 +5,7 @@ using Labyrinth.Core.Player.Contracts;
 using Labyrinth.Core.PlayField;
 using Labyrinth.Core.PlayField.Contracts;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

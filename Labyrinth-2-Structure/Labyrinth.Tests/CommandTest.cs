@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Labyrinth.ConsoleUI.Output;
 using Labyrinth.Core.CommandFactory;
 using Labyrinth.Core.CommandFactory.Contracts;
 using Labyrinth.Core.Commands.Contracts;
 using Labyrinth.Core.Common;
+using Labyrinth.Core.Common.Contracts;
 using Labyrinth.Core.Helpers;
 using Labyrinth.Core.Helpers.Contracts;
 using Labyrinth.Core.Output.Contracts;
@@ -14,7 +16,7 @@ using Labyrinth.Core.PlayField.Contracts;
 using Labyrinth.Core.Score.Contracts;
 using Moq;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -22,7 +24,7 @@ namespace Labyrinth2Tests
     public class CommandTest
     {
         [TestMethod]
-        public void TestMoveUpCommandCorrect()
+        public void TestScoreCommandCorrect()
         {
             IPlayFieldGenerator pg = new PlayFieldGenerator();
             IPlayField playFld = new PlayField(pg, new Position(1, 1), 3, 3);
@@ -30,17 +32,16 @@ namespace Labyrinth2Tests
             Mock<IRenderer> mockRenderer = new Mock<IRenderer>();
             IMementoCaretaker mockMemento = new MementoCaretaker(new List<IMemento>());
             Mock<IScoreLadder> mockScoreLader = new Mock<IScoreLadder>();
-            IPlayer player = new Player("Test",new Cell(new Position(1,1),Constants.StandardGamePlayerChar));
+            IPlayer player = new Player("Test", new Cell(new Position(1, 1), Constants.StandardGamePlayerChar));
 
             ICommandContext cmdContext = new CommandContext(playFld, mockRenderer.Object, mockMemento, mockScoreLader.Object, player);
 
-            ICommandFactory factory  =new SimpleCommandFactory();
-            ICommand command = factory.CreateCommand("u");
+            ICommandFactory factory = new SimpleCommandFactory();
+            ICommand command = factory.CreateCommand("top");
 
             command.Execute(cmdContext);
 
-            Assert.AreEqual(0,player.CurentCell.Position.Row);
-            Assert.AreEqual(1,player.CurentCell.Position.Column);
+            mockRenderer.Verify(x => x.ShowScoreLadder(It.IsAny<IScoreLadderContentProvider>()), Times.Once);
         }
 
         [TestMethod]

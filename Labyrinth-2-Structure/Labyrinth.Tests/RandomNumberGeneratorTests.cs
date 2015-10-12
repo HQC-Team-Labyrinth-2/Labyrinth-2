@@ -4,7 +4,7 @@ using Labyrinth.Common.Contracts;
 using Labyrinth.Core.Common;
 using Moq;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

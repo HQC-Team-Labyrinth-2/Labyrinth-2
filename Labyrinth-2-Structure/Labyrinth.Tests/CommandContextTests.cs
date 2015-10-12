@@ -13,7 +13,7 @@ using Labyrinth.Core.PlayField.Contracts;
 using Labyrinth.Core.Score;
 using Labyrinth.Core.Score.Contracts;
 
-namespace Labyrinth2Tests
+namespace Labyrinth.Tests
 {
     [TestClass]
     public class CommandContextTests
