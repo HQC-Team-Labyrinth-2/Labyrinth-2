@@ -1,4 +1,8 @@
-﻿namespace Labyrinth.Core
+﻿using Labyrinth.Core.CommandFactory.Contracts;
+using Labyrinth.Core.Score;
+using Labyrinth.Core.Score.Contracts;
+
+namespace Labyrinth.Core
 {
     using System;
     using System.Collections.Generic;
@@ -47,8 +51,10 @@
                 output.ShowInfoMessage(e.Message);
             }
 
-            var commandFactory = new SimpleCommandFactory();
-            IGameEngine gameEngine = new StandardGameEngine(output, input, playField, commandFactory, cmmandLogger, player);
+            ICommandFactory commandFactory = new SimpleCommandFactory();
+            IMementoCaretaker memory = new MementoCaretaker(new List<IMemento>());
+            IScoreLadder ladder = ScoreLadder.Instance;
+            IGameEngine gameEngine = new StandardGameEngine(output, input, playField, commandFactory, cmmandLogger, player,memory,ladder);
             gameEngine.Initialize(RandomNumberGenerator.Instance);
             gameEngine.Start();
         }

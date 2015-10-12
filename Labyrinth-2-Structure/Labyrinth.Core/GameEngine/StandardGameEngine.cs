@@ -29,7 +29,7 @@
         private ICommandFactory commandFactory;
         private ICommandContext commandContext;
         private ILogger logger;
-        private MementoCaretaker memory;
+        private IMementoCaretaker memory;
         private IPlayer player;
         private IPlayField playField;
 
@@ -48,16 +48,18 @@
             IPlayField playField,
             ICommandFactory commandFactory,
             ILogger logger,
-            IPlayer player)
+            IPlayer player,
+            IMementoCaretaker memory,
+            IScoreLadder ladder)
         {
             this.playField = playField;
             this.renderer = renderer;
             this.input = inputProvider;
-            this.ladder = ScoreLadder.Instance;
+            this.ladder = ladder;
             this.commandFactory = commandFactory;
             this.logger = logger;
             this.player = player;
-            this.memory = new MementoCaretaker(new List<IMemento>());
+            this.memory = memory;
         }
 
         /// <summary>
