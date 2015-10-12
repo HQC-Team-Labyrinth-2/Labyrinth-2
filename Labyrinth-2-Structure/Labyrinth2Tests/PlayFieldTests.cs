@@ -54,5 +54,11 @@ namespace Labyrinth2Tests
             PlayField field = new PlayField(generator, position, row, col);
             Assert.AreEqual(col, field.NumberOfCols);
         }
+
+        [TestMethod]
+        public void TestAddPlayerOnCorrectPosition()
+        {
+            
+        }
     }
 }

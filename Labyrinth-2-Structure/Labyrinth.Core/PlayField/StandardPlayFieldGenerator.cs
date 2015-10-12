@@ -7,6 +7,9 @@
     using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
+    /// <summary>
+    /// This class represents the playfield generator
+    /// </summary>
     public class StandardPlayFieldGenerator : IPlayFieldGenerator
     {
         private ICell[,] playField;
@@ -14,6 +17,12 @@
         private int cols;
         private IPosition playerPosition;
 
+        /// <summary>
+        /// Constructor with 3 parameters
+        /// </summary>
+        /// <param name="playerPosition">Parameter of type IPosition</param>
+        /// <param name="rows">Parameter of type int</param>
+        /// <param name="cols">Parameter of type int</param>
         public StandardPlayFieldGenerator(IPosition playerPosition, int rows = Constants.StandardGameLabyrinthRows, int cols = Constants.StandardGameLabyrinthCols)
         {
             this.playField = new ICell[rows, cols];
@@ -22,6 +31,11 @@
             this.cols = cols;
         }
 
+        /// <summary>
+        /// Method that generates the playfield
+        /// </summary>
+        /// <param name="rand">Parameter of type IRandomNumberGenerator</param>
+        /// <returns>Returns the playfield as a two dimensional array</returns>
         public ICell[,] GeneratePlayField(IRandomNumberGenerator rand)
         {
             for (int row = 0; row < this.rows; row++)

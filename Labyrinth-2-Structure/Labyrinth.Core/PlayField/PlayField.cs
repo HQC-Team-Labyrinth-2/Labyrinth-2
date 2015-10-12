@@ -9,6 +9,9 @@ namespace Labyrinth.Core.PlayField
     using Labyrinth.Core.Player.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
 
+    /// <summary>
+    /// This class represents the game playfield
+    /// </summary>
     public class PlayField : IPlayField, IMemorizable
     {
         private ICell[,] playField;
@@ -17,6 +20,14 @@ namespace Labyrinth.Core.PlayField
         private int colums;
         private IPosition playerPosition;
 
+
+        /// <summary>
+        /// Constructor with 4 parameters
+        /// </summary>
+        /// <param name="generator">Parameter of type IPlayFieldGenerator</param>
+        /// <param name="playerPosition">Parameter of type IPosition</param>
+        /// <param name="rows">Parameter of type int</param>
+        /// <param name="colums">Parameter of type int</param>
         public PlayField(
             IPlayFieldGenerator generator,
             IPosition playerPosition,
@@ -29,12 +40,12 @@ namespace Labyrinth.Core.PlayField
             this.PlayerPosition = playerPosition;
         }
 
+        /// <summary>
+        /// Property of type int
+        /// </summary>
         public IPosition PlayerPosition
         {
-            get
-            {
-                return this.playerPosition;
-            }
+            get { return this.playerPosition; }
             private set
             {
                 if (value.Column > this.NumberOfCols - 1 ||
@@ -49,6 +60,9 @@ namespace Labyrinth.Core.PlayField
             }
         }
 
+        /// <summary>
+        /// Property of type int
+        /// </summary>
         public int NumberOfRows
         {
             get
@@ -66,6 +80,9 @@ namespace Labyrinth.Core.PlayField
             }
         }
 
+        /// <summary>
+        /// Property of type int
+        /// </summary>
         public int NumberOfCols
         {
             get
@@ -83,16 +100,29 @@ namespace Labyrinth.Core.PlayField
             }
         }
 
+        /// <summary>
+        /// Method that initializes the playfield
+        /// </summary>
+        /// <param name="random">Parameter of type IRandomNumberGenerator</param>
         public void InitializePlayFieldCells(IRandomNumberGenerator random)
         {
             this.playField = this.playFieldGenerator.GeneratePlayField(random);
         }
 
+        /// <summary>
+        /// Method that return cell on a givven position from the play field.
+        /// </summary>
+        /// <param name="position">Cell position.</param>
+        /// <returns>Cell on the given position.</returns>
         public ICell GetCell(IPosition position)
         {
             return this.playField[position.Row, position.Column];
         }
 
+        /// <summary>
+        /// Removes the player from his position on the play field.
+        /// </summary>
+        /// <param name="player">Player that need to be removed.</param>
         public void RemovePlayer(IPlayer player)
         {
             if (player.CurentCell.Position.Row == this.PlayerPosition.Row &&
@@ -102,6 +132,11 @@ namespace Labyrinth.Core.PlayField
             }
         }
 
+        /// <summary>
+        /// Adds the player in given given position on the board.
+        /// </summary>
+        /// <param name="player">Player that want to be added.</param>
+        /// <param name="position">Position on witch player should be move on.</param>
         public void AddPlayer(IPlayer player, IPosition position)
         {
             if (!this.playField[position.Row, position.Column].IsEmpty())
@@ -114,11 +149,19 @@ namespace Labyrinth.Core.PlayField
             this.PlayerPosition = position;
         }
 
+        /// <summary>
+        /// Save the play field in the memory.
+        /// </summary>
+        /// <returns>Clone of the play field object</returns>
         public IMemento SaveMemento()
         {
             return new PlayFieldMemento(this.playField, this.PlayerPosition);
         }
 
+        /// <summary>
+        /// Restore the current play field from memento object. 
+        /// </summary>
+        /// <param name="memento"></param>
         public void RestoreMemento(IMemento memento)
         {
             this.playField = memento.PlayField;
