@@ -6,9 +6,9 @@
     {
         private readonly ICommandInputProvider commandInput;
 
-        private readonly IMenuInputProvider menuInput;
+        private readonly IInfoInputProvider menuInput;
 
-        public ConsoleInputProvider(ICommandInputProvider cmdInput, IMenuInputProvider menuInput)
+        public ConsoleInputProvider(ICommandInputProvider cmdInput, IInfoInputProvider menuInput)
         {
             this.commandInput = cmdInput;
             this.menuInput = menuInput;

@@ -3,7 +3,7 @@
     using System;
     using Labyrinth.Core.Input.Contracts;
 
-    public class Menu : IMenuInputProvider
+    public class Menu : IInfoInputProvider
     {
         public string GetPlayerName()
         {

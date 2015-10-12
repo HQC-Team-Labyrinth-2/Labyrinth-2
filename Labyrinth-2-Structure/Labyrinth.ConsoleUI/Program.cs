@@ -12,7 +12,7 @@
         private static void Main()
         {
             ICommandInputProvider commandInput = new CommandReader();
-            IMenuInputProvider menuInput = new Menu();
+            IInfoInputProvider menuInput = new Menu();
             IInputProvider inputProvider = new ConsoleInputProvider(commandInput, menuInput);
 
             IInfoRenderer infoPanel = new InfoPanel();

@@ -1,17 +1,17 @@
 ﻿namespace Labyrinth.Core.Input.Contracts
 {
     /// <summary>
-    /// Interface for providing menu input
+    /// Interface for providing info input
     /// </summary>
-    public interface IMenuInputProvider
+    public interface IInfoInputProvider
     {
         /// <summary>
-        /// Method that gets from the console the player's name as a string
+        /// Method that gets from the UI the player's name as a string
         /// </summary>
         string GetPlayerName();
 
         /// <summary>
-        /// Method that gets from the console the dimensions of the chosen playfield
+        /// Method that gets from the UI the dimensions of the chosen playfield
         /// </summary>
         int GetPlayFieldDimensions();
     }

@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Labyrinth.Core.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -81,7 +82,7 @@
     <Compile Include="GameEngine\StandardGameEngine.cs" />
     <Compile Include="Input\Contracts\ICommandInputProvider.cs" />
     <Compile Include="Input\Contracts\IInputProvider.cs" />
-    <Compile Include="Input\Contracts\IMenuInputProvider.cs" />
+    <Compile Include="Input\Contracts\IInfoInputProvider.cs" />
     <Compile Include="LabyrinthFacade.cs" />
     <Compile Include="Output\Contracts\IInfoRenderer.cs" />
     <Compile Include="Output\Contracts\ILadderRenderer.cs" />
