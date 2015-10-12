@@ -17,11 +17,12 @@
         public void Execute(ICommandContext context)
         {
             context.PlayField.InitializePlayFieldCells(RandomNumberGenerator.Instance);
-
+            
             context.Memory.Memento.Clear();
 
             context.Player.MovesCount = 0;
             context.Player.CurentCell = context.PlayField.GetCell(context.Player.StartPosition);
+            context.PlayField.PlayerPosition = context.Player.StartPosition;
         }
 
         /// <summary>

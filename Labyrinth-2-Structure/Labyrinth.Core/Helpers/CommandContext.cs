@@ -9,7 +9,6 @@
     /// <summary>
     /// Class for command context
     /// </summary>
-
     public class CommandContext : ICommandContext
     {
         /// <summary>
@@ -20,7 +19,6 @@
         /// <param name="memory">Parameter of type IMementoCaretaker</param>
         /// <param name="ladder">Parameter of type IScoreLadder</param>
         /// <param name="player">Parameter of type IPlayer</param>
-
         public CommandContext(IPlayField playField, IRenderer output, IMementoCaretaker memory, IScoreLadder ladder, IPlayer player)
         {
             this.PlayField = playField;

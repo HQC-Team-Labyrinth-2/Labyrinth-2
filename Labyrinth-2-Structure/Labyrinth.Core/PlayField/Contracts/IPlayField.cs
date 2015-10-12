@@ -23,7 +23,7 @@
         /// <summary>
         /// Property of type IPosition
         /// </summary>
-        IPosition PlayerPosition { get; }
+        IPosition PlayerPosition { get; set; }
 
         /// <summary>
         /// Method that gets the current cell 
@@ -39,13 +39,13 @@
         void InitializePlayFieldCells(IRandomNumberGenerator generator);
 
         /// <summary>
-        /// Method that removes ????
+        /// Method that removes the player on the given position.
         /// </summary>
         /// <param name="player">Parameter of type IPlayer</param>
         void RemovePlayer(IPlayer player);
 
         /// <summary>
-        /// Method that adds ????
+        /// Method that adds the player on the given position.
         /// </summary>
         /// <param name="player">Parameter of type IPlayer</param>
         /// <param name="position">Parameter of type IPositin</param>

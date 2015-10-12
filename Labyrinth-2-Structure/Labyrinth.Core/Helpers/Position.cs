@@ -1,8 +1,8 @@
 ﻿namespace Labyrinth.Core.Helpers
 {
+    using System;
     using Labyrinth.Core.Common;
     using Labyrinth.Core.Helpers.Contracts;
-    using System;
 
     /// <summary>
     /// Class for position, inherits IPosition
@@ -40,6 +40,7 @@
                     throw new ArgumentException(
                         string.Format("Column value must be larger or equal to 1"));
                 }
+
                 this.column = value;
             }
         }
@@ -60,6 +61,7 @@
                 {
                     throw new ArgumentException(string.Format("Row value must be larger or equal to 0"));
                 }
+
                 this.row = value;
             }
         }

@@ -12,7 +12,7 @@
     {
         private string name;
         private ICell currentCell;
-        
+
         /// <summary>
         /// Constructor with 2 parameters
         /// </summary>
@@ -45,7 +45,6 @@
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    //TODO: custom exception for invalid name
                     throw new ArgumentException("Player name can't be null or empty string!");
                 }
 
@@ -62,6 +61,7 @@
             {
                 return this.currentCell;
             }
+
             set
             {
                 if (value == null)
@@ -70,7 +70,6 @@
                 }
 
                 this.currentCell = value;
-
             }
         }
 

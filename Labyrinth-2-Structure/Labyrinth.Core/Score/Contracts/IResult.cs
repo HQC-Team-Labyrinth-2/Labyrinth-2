@@ -5,7 +5,5 @@
         int MovesCount { get; }
 
         string PlayerName { get; }
-
-
     }
 }

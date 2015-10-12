@@ -1,6 +1,7 @@
 ﻿namespace Labyrinth.Core.Output.Contracts
 {
     using Labyrinth.Core.PlayField.Contracts;
+    
     /// <summary>
     /// Interface that renders the playfield
     /// </summary>

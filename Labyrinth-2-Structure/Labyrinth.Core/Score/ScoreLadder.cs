@@ -9,38 +9,43 @@
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Score.Contracts;
 
+    /// <summary>
+    /// Singleton class that stores top results.
+    /// </summary>
     public class ScoreLadder : IScoreLadder, IScoreLadderContentProvider
     {
-        private static object syncRoot = new object();
         private static ScoreLadder instance;
         private int capacity;
         private List<Result> topResults;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         private ScoreLadder()
         {
             this.topResults = new List<Result>();
             this.Capacity = Constants.StandardGameTopResultCapacity;
         }
 
+        /// <summary>
+        /// Property that set and return 
+        /// </summary>
         public static ScoreLadder Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    lock (syncRoot)
-                    {
-                        if (instance == null)
-                        {
-                            instance = new ScoreLadder();
-                        }
-                    }
+                    instance = new ScoreLadder();
                 }
 
                 return instance;
             }
         }
 
+        /// <summary>
+        /// Capacity of the score ladder.
+        /// </summary>
         public int Capacity
         {
             get
@@ -59,6 +64,11 @@
             }
         }
 
+        /// <summary>
+        /// Check the result if qualifies to be added in the ladder.
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         public bool ResultQualifiesInLadder(int result)
         {
             if (this.topResults.Count < Constants.StandardGameTopResultCapacity)
@@ -74,7 +84,12 @@
             return false;
         }
 
-        public void AddResultInLadder( int movesCount, string playerName)
+        /// <summary>
+        /// Adds the  result in the ladder.
+        /// </summary>
+        /// <param name="movesCount">Moves count</param>
+        /// <param name="playerName">Player name</param>
+        public void AddResultInLadder(int movesCount, string playerName)
         {
             Result result = new Result(movesCount, playerName);
             if (this.topResults.Count == this.Capacity)
@@ -89,6 +104,10 @@
             this.topResults.Sort();
         }
 
+        /// <summary>
+        /// Provide the ladder for showing in the UI.
+        /// </summary>
+        /// <returns>Top results</returns>
         public string ProvideContent()
         {
             StringBuilder content = new StringBuilder();
@@ -110,11 +129,18 @@
             }
         }
 
+        /// <summary>
+        /// Returns the current count of results in the lader.
+        /// </summary>
+        /// <returns></returns>
         public int CurrentCount()
         {
             return this.topResults.Count;
         }
 
+        /// <summary>
+        /// Initialize Singleton instanfe to null.
+        /// </summary>
         public void RestartLadder()
         {
             instance = null;

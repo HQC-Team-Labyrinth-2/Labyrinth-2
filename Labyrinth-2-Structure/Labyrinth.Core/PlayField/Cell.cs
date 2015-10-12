@@ -1,9 +1,9 @@
 ﻿namespace Labyrinth.Core.PlayField
 {
+    using System;
     using Labyrinth.Core.Common;
     using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.PlayField.Contracts;
-    using System;
 
     /// <summary>
     /// This class represents the game cell
@@ -26,7 +26,7 @@
         /// <summary>
         /// Property of type IPosition
         /// </summary>
-        public IPosition Position { get;  set; }
+        public IPosition Position { get; set; }
 
         /// <summary>
         /// Property of type char
@@ -40,14 +40,14 @@
 
             set
             {
-                if(
+                if (
                     value != Constants.StandardGameCellEmptyValue &&
                     value != Constants.StandardGameCellWallValue &&
-                    value != Constants.StandardGamePlayerChar
-                    )
+                    value != Constants.StandardGamePlayerChar)
                 {
                     throw new ArgumentException("The value char must be in already defined ones!");
                 }
+
                 this.valueChar = value;
             }
         }

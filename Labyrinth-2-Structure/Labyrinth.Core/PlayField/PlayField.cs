@@ -19,7 +19,6 @@
         private int colums;
         private IPosition playerPosition;
 
-
         /// <summary>
         /// Constructor with 4 parameters
         /// </summary>
@@ -44,8 +43,12 @@
         /// </summary>
         public IPosition PlayerPosition
         {
-            get { return this.playerPosition; }
-            private set
+            get
+            {
+                return this.playerPosition;
+            }
+
+            set
             {
                 if (value.Column > this.NumberOfCols - 1 ||
                     value.Column < 0 ||
@@ -68,6 +71,7 @@
             {
                 return this.rows;
             }
+
             private set
             {
                 if (value < 3)
@@ -88,6 +92,7 @@
             {
                 return this.colums;
             }
+
             private set
             {
                 if (value < 3)

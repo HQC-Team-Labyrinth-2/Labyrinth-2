@@ -3,7 +3,6 @@
     /// <summary>
     /// This enumeration contains all the possible directions, which you can choose
     /// </summary>
-    
     public enum Direction
     {
         Up,

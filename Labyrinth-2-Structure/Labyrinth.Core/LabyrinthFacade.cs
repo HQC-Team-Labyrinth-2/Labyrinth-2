@@ -1,7 +1,6 @@
-﻿using System;
-
-namespace Labyrinth.Core
+﻿namespace Labyrinth.Core
 {
+    using System;
     using System.Collections.Generic;
     using Labyrinth.Core.CommandFactory;
     using Labyrinth.Core.Common;
@@ -15,9 +14,18 @@ namespace Labyrinth.Core
     using Labyrinth.Core.PlayField;
     using Labyrinth.Core.PlayField.Contracts;
 
+    /// <summary>
+    /// Facade class for the main logic
+    /// </summary>
     public class LabyrinthFacade
     {
-        public static void Start(IRenderer output, IInputProvider input, ILogger logger)
+        /// <summary>
+        /// Method that start the main logic of the game.
+        /// </summary>
+        /// <param name="output">Output renderer</param>
+        /// <param name="input">Iput provider</param>
+        /// <param name="cmmandLogger">Command logger</param>
+        public static void Start(IRenderer output, IInputProvider input, ILogger cmmandLogger)
         {
             output.ShowInfoMessage("Please ente your name: ");
             string playerName = input.GetPlayerName();
@@ -26,19 +34,21 @@ namespace Labyrinth.Core
             int dimension = input.GetPlayFieldDimensions();
 
             ICell playerCell = new Cell(new Position(dimension / 2, dimension / 2));
-            IPlayField playField=null;
+            IPlayField playField = null;
             var player = new Player.Player(playerName, playerCell);
+
             try
             {
                 var playFieldGenerator = new StandardPlayFieldGenerator(player.CurentCell.Position, dimension, dimension);
                 playField = new PlayField.PlayField(playFieldGenerator, player.CurentCell.Position, dimension, dimension);
             }
-            catch (ArgumentOutOfRangeException)
+            catch (ArgumentOutOfRangeException e)
             {
-                output.ShowInfoMessage("Please enter a play field dimension greater than 2!");
+                output.ShowInfoMessage(e.Message);
             }
+
             var commandFactory = new SimpleCommandFactory();
-            IGameEngine gameEngine = new StandardGameEngine(output, input, playField, commandFactory, logger, player);
+            IGameEngine gameEngine = new StandardGameEngine(output, input, playField, commandFactory, cmmandLogger, player);
             gameEngine.Initialize(RandomNumberGenerator.Instance);
             gameEngine.Start();
         }

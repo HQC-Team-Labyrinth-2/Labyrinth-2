@@ -1,5 +1,4 @@
-﻿
-namespace Labyrinth.Core.GameEngine
+﻿namespace Labyrinth.Core.GameEngine
 {
     using System.Collections.Generic;
     using Labyrinth.Common.Contracts;
@@ -7,10 +6,10 @@ namespace Labyrinth.Core.GameEngine
     using Labyrinth.Core.Commands.Contracts;
     using Labyrinth.Core.Common;
     using Labyrinth.Core.Common.Logger;
+    using Labyrinth.Core.GameEngine.Contracts;
     using Labyrinth.Core.Helpers;
     using Labyrinth.Core.Helpers.Contracts;
     using Labyrinth.Core.Helpers.CustomExceptions;
-    using Labyrinth.Core.GameEngine.Contracts;
     using Labyrinth.Core.Input.Contracts;
     using Labyrinth.Core.Output.Contracts;
     using Labyrinth.Core.Player.Contracts;

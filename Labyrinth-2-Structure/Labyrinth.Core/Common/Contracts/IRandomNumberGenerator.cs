@@ -1,7 +1,7 @@
 ﻿namespace Labyrinth.Common.Contracts
 {
     /// <summary>
-    ///Interface for random number generator.
+    /// Interface for random number generator.
     /// </summary>
     public interface IRandomNumberGenerator
     {
